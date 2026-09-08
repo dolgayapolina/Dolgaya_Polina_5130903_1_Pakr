@@ -1,0 +1,56 @@
+/* используемый шрифт */
+@font-face {
+    font-family: 'Comfortaa'; /* имя, которое будешь использовать */
+    src: url('styles/Comfortaa-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* основная часть */
+html 
+{
+    background-color: #F6F5EC;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+/* блок для элементов в заголовке */
+header 
+{
+    background-color: #FBB2B3;
+    height: 20vh; 
+    border-radius: 33px; 
+    padding: 0 40px; /* отступы внутри header */
+    display: flex;
+    align-items: center;      /* выравниваем по вертикали по центру */
+    justify-content: space-between; /* заголовок слева, кнопка справа */
+}
+
+/* класс кнопок */
+.nav-button 
+{
+    /* цвет текста на кнопке */
+
+    color: #F6F5EC;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* блок для элементов в блоке информация*/
+#info 
+{
+    background-color: #A3BFD7;
+    height: 60vh;
+    border-radius: 33px;
+    margin: 20px 0; /* отступы сверху и снизу по 30, по краям не меняется*/
+}
+
+/* для телефонов, у которых максимальный размер 768 px */
+@media (max-width: 768px) {
+    header 
+    {
+        height: 30vh; 
+        flex-direction: column;
+        height: auto;
+    }
+}
