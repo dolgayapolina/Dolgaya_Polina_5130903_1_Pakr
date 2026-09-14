@@ -1,56 +1,483 @@
-/* используемый шрифт */
+/* --- Общие настройки и сброс --- */
+
 @font-face {
-    font-family: 'Comfortaa'; /* имя, которое будешь использовать */
-    src: url('styles/Comfortaa-VariableFont_wght.ttf') format('truetype');
+    font-family: 'Comfortaa';   /* имя, которое будешь использовать */
+    src: url('../fonts/Comfortaa-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
-/* основная часть */
-html 
-{
-    background-color: #F6F5EC;
+:root {
+    --cream: #F6F5EC;      /* Светло-бежевый (фон) */
+    --blue: #A3BFD7;       /* Голубой (блоки) */
+    --pink: #FBB2B3;       /* Розовый (шапка) */
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Comfortaa', sans-serif;
+    background-color: var(--cream); /* Светло-бежевый фон */
+    line-height: 1.5;
+    overflow-x: hidden;
 }
 
-/* блок для элементов в заголовке */
-header 
-{
-    background-color: #FBB2B3;
-    height: 20vh; 
-    border-radius: 33px; 
-    padding: 0 40px; /* отступы внутри header */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Шапка --- */
+.header {
+    background-color: var(--pink);
+    padding: 15px 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 20px;
+    position: fixed;
+    top: 0;          
+    left: 0;          
+    width: 100%;     
+    z-index: 1000;    
+}
+
+.nav {
     display: flex;
-    align-items: center;      /* выравниваем по вертикали по центру */
-    justify-content: space-between; /* заголовок слева, кнопка справа */
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
-/* класс кнопок */
-.nav-button 
-{
-    /* цвет текста на кнопке */
-
-    color: #F6F5EC;
-    font-size: 1.2em;
-    font-weight: bold;
+.nav a {
     text-decoration: none;
+    color: var(--cream);
+    font-size: 16px;
+    transition: opacity 0.3s;
 }
 
-/* блок для элементов в блоке информация*/
-#info 
-{
-    background-color: #A3BFD7;
-    height: 60vh;
-    border-radius: 33px;
-    margin: 20px 0; /* отступы сверху и снизу по 30, по краям не меняется*/
+.nav a:hover {
+    opacity: 0.8;
 }
 
-/* для телефонов, у которых максимальный размер 768 px */
-@media (max-width: 768px) {
-    header 
-    {
-        height: 30vh; 
-        flex-direction: column;
-        height: auto;
+/* --- Главный баннер --- */
+.hero-section {
+    padding: 20px 0;
+}
+
+.hero-content {
+    background-color: var(--blue);
+    border-radius: 30px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px; /* отступы между элементами внутри контейнера*/
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+}
+
+/* контейнер для изображения */
+.hero-image {
+    flex: 0 0 300px;
+}
+
+/* как изображение находится в контейнере */
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero-text h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.hero-text p {
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* --- Секция Аттракционы --- */
+.main-content {
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden; /* Обрезает всё, что вылезает за пределы секции */
+
+}
+
+/* Левое облако */
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: -50px;              /* Отступ сверху от начала секции */
+    left: -100px;           /* Сдвигаем влево за край экрана — облако «выходит» из края */
+    width: 600px;         
+    height: 250px;
+    background-image: url('../images/cloud.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Правое облако */
+.main-content::after {
+    content: '';
+    position: absolute;
+    top: -50px;             /* Можно сместить ниже, чтобы облака были на разной высоте */
+    right: -100px;          /* Сдвигаем вправо за край */
+    width: 600px;      
+    height: 300px;
+    background-image: url('../images/cloud.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scaleX(-1);  /* Отзеркаливаем */
+}
+
+.section-title {
+    text-align: center;
+    color: var(--pink);
+    font-size: 32px;
+    margin-bottom: 50px;
+    font-weight: normal;
+}
+
+.block-title {
+    text-align: center;
+    color: var(--blue);
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+.attraction-block {
+    margin-bottom: 70px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Карточка теперь работает как кнопка */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer; /* Показывает, что можно кликнуть */
+}
+
+.card-label {
+    color: #F8C8D0;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: center;
+    transition: color 0.3s;
+}
+
+.card-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #E0E0E0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card:hover .card-image {
+    transform: scale(1.03);
+}
+
+/* ========================================== */
+/* СТИЛИ ДЛЯ МОДАЛЬНЫХ ОКОН (ОВЕРЛЕЕВ)        */
+/* ========================================== */
+
+/* Скрываем чекбоксы, которые управляют окнами */
+.modal-toggle {
+    display: none;
+}
+
+/* Фон оверлея */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Затемнение фона */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+}
+
+/* Показываем оверлей, когда чекбокс отмечен */
+.modal-toggle:checked + .modal-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Контент модального окна */
+.modal-content {
+    background-color: #FFFFFF; /* Белый фон для окна */
+    border-radius: 30px;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    padding: 40px;
+    gap: 40px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    max-height: 90vh; /* Ограничение высоты */
+    overflow-y: auto; /* Скролл, если текст не влезает */
+}
+
+.modal-toggle:checked + .modal-overlay .modal-content {
+    transform: translateY(0);
+}
+
+/* Кнопка закрытия (крестик) */
+.modal-close {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+    z-index: 10;
+}
+
+.modal-close::before,
+.modal-close::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    background-color: #5A5A5A;
+}
+
+.modal-close::before { transform: rotate(45deg); }
+.modal-close::after { transform: rotate(-45deg); }
+
+.modal-close:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Текстовая часть */
+.modal-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 15px;
+    color: #5A5A5A;
+    line-height: 1.6;
+}
+
+/* Нижние характеристики */
+.modal-details {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+}
+
+.modal-details p {
+    margin-bottom: 5px;
+}
+
+/* Картинка в модалке */
+.modal-image {
+    flex: 0 0 45%;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #E0E0E0;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Цветовые вариации оверлеев (по макетам) */
+.overlay-pink .modal-content {
+    background-color: #FDE8EC; /* Светло-розовый фон */
+}
+.overlay-pink .modal-text { color: #C97A88; } /* Розоватый текст */
+.overlay-pink .modal-details { color: #C97A88; }
+
+.overlay-blue .modal-content {
+    background-color: #E6EEF8; /* Светло-голубой фон */
+}
+.overlay-blue .modal-text { color: #7A9BB8; } /* Голубоватый текст */
+.overlay-blue .modal-details { color: #7A9BB8; }
+
+
+/* --- Секция Тарифы --- */
+.pricing-section {
+    padding: 40px 0;
+    position: relative;
+}
+
+.pill-title {
+    background-color: #F8C8D0;
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 10px 60px;
+    border-radius: 30px;
+    font-size: 24px;
+    margin-bottom: 40px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.pricing-section .pill-title::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -20px;
+    right: -20px;
+    bottom: -5px;
+    background-color: #A3B8D6;
+    border-radius: 35px;
+    z-index: -1;
+}
+
+/* --- Слайдер тарифов (CSS Scroll Snap) --- */
+.pricing-slider-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.pricing-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Включает горизонтальную прокрутку */
+    padding: 20px 10px;
+    scroll-snap-type: x mandatory; /* Прилипание карточек при прокрутке */
+    -webkit-overflow-scrolling: touch; /* Плавная прокрутка на iOS */
+    
+    /* Скрытие полосы прокрутки для разных браузеров */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE и Edge */
+}
+
+.pricing-slider::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* Стили самих карточек */
+.pricing-card {
+    background-color: rgba(163, 184, 214, 0.8); /* Полупрозрачный голубой, как на скриншоте */
+    color: #FFFFFF;
+    padding: 40px 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 280px; /* Фиксированная ширина карточки */
+    flex-shrink: 0; /* Запрещает карточкам сжиматься */
+    scroll-snap-align: center; /* Центрирование карточки при прилипании */
+    box-shadow: 0 5px 15px rgba(163, 184, 214, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s;
+}
+
+/* Декоративные билетики (остаются на месте) */
+.ticket {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    background-color: #F8C8D0;
+    border: 2px dashed #FFFFFF;
+    border-radius: 5px;
+    opacity: 0.8;
+}
+.ticket-1 { top: 10%; left: 5%; transform: rotate(-15deg); }
+.ticket-2 { top: 20%; right: 5%; transform: rotate(15deg); }
+.ticket-3 { bottom: 10%; left: 10%; transform: rotate(10deg); }
+.ticket-4 { bottom: 20%; right: 10%; transform: rotate(-10deg); }
+
+/* --- Подвал --- */
+.footer {
+    padding: 40px 0 60px;
+    text-align: center;
+}
+
+.contacts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #A3B8D6;
+    font-size: 16px;
+}
+
+/* --- Адаптивность --- */
+
+@media (max-width: 900px) {
+    .hero-content { flex-direction: column; text-align: center; padding: 30px; }
+    .hero-image { flex: 0 0 auto; max-width: 250px; }
+    .hero-text p { text-align: center; }
+    .cards-grid { gap: 20px; }
+    .main-content::before,
+    .main-content::after {
+        display: none; /* Полностью скрываем облака на планшетах и телефонах */
     }
+    /* Адаптив для модальных окон */
+    .modal-content {
+        flex-direction: column-reverse; /* Картинка сверху, текст снизу */
+        padding: 20px;
+        gap: 20px;
+    }
+    .modal-image { flex: 0 0 200px; width: 100%; }
+    .modal-close { top: 10px; left: 10px; }
+
+}
+
+@media (max-width: 600px) {
+    .nav { gap: 15px; }
+    .block-title { font-size: 20px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .pill-title { padding: 8px 30px; font-size: 20px; }
+    .pricing-card { padding: 30px 20px; }
+    .pricing-price { font-size: 28px; }
+    .ticket { display: none; }
+    .contacts-grid { font-size: 14px; }
 }

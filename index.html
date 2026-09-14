@@ -1,28 +1,305 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
-    <title>Парк развлечений</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Облако Счастья</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
-
 <body>
-    <!--[if IE]>
-    <script>
-    document.createElement('header');
-    document.createElement('nav');
-    document.createElement('section');
-    document.createElement('article');
-    document.createElement('aside');
-    document.createElement('footer');
-    </script>
-    <![endif]-->
-    <header>
-        <a href="#info" class="nav-button">О парке</a>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#about">О парке</a>
+                <a href="#attractions">Аттракционы</a>
+                <a href="#tarifs">Тарифы</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+        </div>
     </header>
 
-    <div id="info">
+    <!-- Главный баннер -->
+    <section class="hero-section" id="about">
+        <div class="container hero-content">
+            <div class="hero-image">
+                <img src="images/carousel.png" alt="Карусель">
+            </div>
+            <div class="hero-text">
+                <h1>Добро пожаловать в «Облако счастья»!</h1>
+                <p>«Облако Счастья» — первый в городе парк, где главное блюдо — сладкая вата. Четыре зоны: оранжерейный «Карамельный вихрь», батутный «Прыжок в облако», водная «Сахарная река» и зеркальный «Ватный лабиринт». Главная фишка — 10 автоматов с безлимитной ватой из натуральных ингредиентов. Для родителей: парковка, комната матери и ребенка, видеотрансляция площадок на телефон и «Тихий час» с 13:00 до 14:00. Купкой билет онлайн за 3 дня — получи именной браслет в подарок. «Облако Счастья» — это место, где возвращаются в детство. Приходи за порцией счастья!</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- ========================================== -->
+    <!-- СКРЫТЫЕ ОВЕРЛЕИ (МОДАЛЬНЫЕ ОКНА)           -->
+    <!-- ========================================== -->
+    
+    <!-- Оверлей 1: Карамельная центрифуга -->
+    <input type="checkbox" id="modal-1" class="modal-toggle">
+    <div class="modal-overlay overlay-pink">
+        <label for="modal-1" class="modal-close"></label>
+        <div class="modal-content">
+            <div class="modal-text">
+                <p>«Карамельная центрифуга» — это круговой аттракцион для детей и взрослых. Платформа с сиденьями плавно вращается, постепенно набирая скорость. Мягкие бортики и надёжные ремни безопасности удерживают пассажиров на месте, поэтому кататься комфортно и не страшно. Аттракцион подходит для тех, кто любит лёгкое ощущение полёта, но не готов к экстремальным горкам. Во время сеанса играет весёлая музыка, а разноцветная подсветка создаёт праздничное настроение.</p>
+                </div>
+            <div class="modal-details">
+                <p>Возраст: от 7 лет</p>
+                <p>Рост: от 120 см</p>
+                <p>Длительность: 3 минуты</p>
+                <p>Вместимость: 24 человека</p>
+            </div>
+            <div class="modal-image">
+                <img src="images/carousel 2.png" alt="Карамельная центрифуга">
+            </div>
+        </div>
     </div>
+
+    <!-- Оверлей 2: Сахарная цепочка -->
+    <input type="checkbox" id="modal-2" class="modal-toggle">
+    <div class="modal-overlay overlay-pink">
+        <label for="modal-2" class="modal-close"></label>
+        <div class="modal-content">
+            <div class="modal-text">
+                <p>Классическая цепная карусель в нашем исполнении превращается в полёт сквозь сахарное облако. Качели поднимаются на высоту 8 метров, а разноцветные цепи подсвечиваются неоновым светом. Ветер в лицо, восторг в глазах и чувство свободы — идеальный вариант для тех, кто хочет драйва, но пока боится экстремальных горок. Родители могут кататься вместе с малышами — места хватит всем.</p>
+            </div>
+            <div class="modal-details">
+                <p>Возраст: от 5 лет</p>
+                <p>Рост: без ограничений</p>
+                <p>Длительность: 4 минуты</p>
+                <p>Вместимость: 32 человека</p>
+            </div>
+            <div class="modal-image">
+                <img src="images/chain_carousel.png" alt="Сахарная цепочка">
+            </div>
+        </div>
+    </div>
+
+    <!-- Оверлей 3: Гигантский батутный город -->
+    <input type="checkbox" id="modal-3" class="modal-toggle">
+    <div class="modal-overlay overlay-blue">
+        <label for="modal-3" class="modal-close"></label>
+        <div class="modal-content">
+            <div class="modal-text">
+                <p>Десять соединённых между собой батутов занимают площадь 500 квадратных метров! Прыгай, кувыркайся, делай сальто или просто падай в поролоновую яму, наполненную белыми и розовыми кубиками. Приземление настолько мягкое, что его сравнишь с падением в облако. Для малышей до 4 лет выделен отдельный «тихий уголок» с низкими батутами и мягкими бортиками. Сменные носки выдаются на входе бесплатно — чтобы никто не скользил.</p>
+            </div>
+            <div class="modal-details">
+                <p>Возраст: от 3 лет</p>
+                <p>Рост: без ограничений</p>
+                <p>Длительность: без ограничений</p>
+                <p>Вместимость: до 50 человек одновременно</p>
+            </div>
+            <div class="modal-image">
+                <img src="images/trampoline.png" alt="Гигантский батутный город">
+            </div>
+        </div>
+    </div>
+
+    <!-- Оверлей 4: Облачный лес -->
+    <input type="checkbox" id="modal-4" class="modal-toggle">
+    <div class="modal-overlay overlay-blue">
+        <label for="modal-4" class="modal-close"></label>
+        <div class="modal-content">
+            <div class="modal-text">
+                <p>«Облачный лес» — верёвочный город на высоте до 2 метров. Подвесные мостики, канатные переправы и мягкие препятствия соединены в один маршрут. В конце — стена с липучками, на которую можно прыгнуть и прилипнуть. Внизу — поролоновая подушка, приземление мягкое и безопасное. Три уровня сложности: для малышей, детей постарше и взрослых. Перед началом — брифинг и страховочная система. На всём пути перила и сетки — упасть невозможно. Родители могут проходить маршрут вместе с детьми.</p>
+            </div>
+            <div class="modal-details">
+                <p>Возраст: от 3 лет</p>
+                <p>Вес: до 100 кг</p>
+                <p>Высота: до 2 метров</p>
+                <p>Длительность: без ограничений</p>
+                <p>Вместимость: до 30 человек</p>
+            </div>
+            <div class="modal-image">
+                <img src="images/rope_park.png" alt="Облачный лес">
+            </div>
+        </div>
+    </div>
+
+    <!-- Оверлей 5: Путешествие в ватное царство -->
+    <input type="checkbox" id="modal-5" class="modal-toggle">
+    <div class="modal-overlay overlay-pink">
+        <label for="modal-5" class="modal-close"></label>
+        <div class="modal-content">
+            <div class="modal-text">
+                <p>Медленная прогулка на лодке по искусственному каналу длиной 150 метров. Вода подсвечена пастельными тонами, а вокруг установлены движущиеся фигуры сказочных персонажей: Зайка Сладкоежка, Медвежонок Силач, Совёнок Умник и Лисичка Веселушка. Все они делают сладкую вату прямо на твоих глазах! Лодка останавливается у каждой фигуры на 10 секунд, чтобы можно было сфотографироваться. В конце маршрута — водопад из светящихся пузырей. Идеально для семей с малышами и для тех, кто хочет передохнуть от шума.</p>
+            </div>
+            <div class="modal-details">
+                <p>Возраст: 0+</p>
+                <p>Рост: без ограничений</p>
+                <p>Длительность: 7 минут</p>
+                <p>Вместимость: 6 человек в лодке</p>
+            </div>
+            <div class="modal-image">
+                <img src="images/boats.png" alt="Путешествие в ватное царство">
+            </div>
+        </div>
+    </div>
+
+    <!-- Оверлей 6: Ватный фонтан -->
+    <input type="checkbox" id="modal-6" class="modal-toggle">
+    <div class="modal-overlay overlay-pink">
+        <label for="modal-6" class="modal-close"></label>
+        <div class="modal-content">
+            <div class="modal-text">
+                <p>«Ватный фонтан» — это большая площадка с фонтаном, по которому можно бегать. Вместо воды из него бьёт лёгкий ароматный туман с запахом клубники, ванили и банана. Туман безопасный: состоит из воды и натуральных ароматизаторов, не пачкает одежду и не вызывает аллергии. Дети бегают сквозь облака, а датчики движения подсвечивают струи разными цветами. Чем активнее двигаешься — тем ярче фонтан. Можно просто стоять и смотреть, как туман переливается на солнце.</p>
+            </div>
+            <div class="modal-details">
+                <p>Возраст: 0+</p>
+                <p>Длительность: без ограничений</p>
+                <p>Рост: без ограничений</p>
+            </div>
+            <div class="modal-image">
+                <img src="images/fountain.png" alt="Ватный фонтан">
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content" id="attractions">
+        <div class="container">
+            
+            <h2 class="section-title">Аттракционы</h2>
+
+            <!-- Блок 1: Карамельный вихрь -->
+            <div class="attraction-block">
+                <h3 class="block-title">Карамельный вихрь</h3>
+                <div class="cards-grid">
+                    
+                    <!-- Карточка 1 открывает модалку 1 -->
+                    <label for="modal-1" class="card">
+                        <p class="card-label">Карамельная центрифуга</p>
+                        <div class="card-image">
+                            <img src="images/carousel 2.png" alt="Карамельная центрифуга">
+                        </div>
+                    </label>
+                    
+                    <!-- Карточка 2 открывает модалку 2 -->
+                    <label for="modal-2" class="card">
+                        <p class="card-label">Сахарная цепочка</p>
+                        <div class="card-image">
+                            <img src="images/chain_carousel.png" alt="Сахарная цепочка">
+                        </div>
+                    </label>
+                    
+                </div>
+            </div>
+
+            <!-- Блок 2: Прыжок в облако -->
+            <div class="attraction-block">
+                <h3 class="block-title">Прыжок в облако</h3>
+                <div class="cards-grid">
+                    
+                    <label for="modal-3" class="card">
+                        <p class="card-label">Гигантский батутный город</p>
+                        <div class="card-image">
+                            <img src="images/trampoline.png" alt="Гигантский батутный город">
+                        </div>
+                    </label>
+                    
+                    <label for="modal-4" class="card">
+                        <p class="card-label">Облачный лес</p>
+                        <div class="card-image">
+                            <img src="images/rope_park.png" alt="Облачный лес">
+                        </div>
+                    </label>
+                    
+                </div>
+            </div>
+
+            <!-- Блок 3: Сахарная река -->
+            <div class="attraction-block">
+                <h3 class="block-title">Сахарная река</h3>
+                <div class="cards-grid">
+                    
+                    <!-- Карточка 5 открывает модалку 5 -->
+                    <label for="modal-5" class="card">
+                        <p class="card-label">Путешествие в ватное царство</p>
+                        <div class="card-image">
+                            <img src="images/boats.png" alt="Путешествие в ватное царство">
+                        </div>
+                    </label>
+                    
+                    <!-- Карточка 6 открывает модалку 6 -->
+                    <label for="modal-6" class="card">
+                        <p class="card-label">Ватный фонтан</p>
+                        <div class="card-image">
+                            <img src="images/fountain.png" alt="Ватный фонтан">
+                        </div>
+                    </label>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Секция Тарифы -->
+    <section class="pricing-section" id="tarifs">
+        <div class="container">
+            <h2 class="section-title pill-title">Тарифы</h2>
+            
+            <!-- Обертка слайдера -->
+            <div class="pricing-slider-wrapper">
+                <!-- Контейнер с прокруткой -->
+                <div class="pricing-slider">
+                    
+                    <!-- Карточка 1 -->
+                    <div class="pricing-card">
+                        <p class="pricing-time">Попробовать<br>до 14:00</p>
+                        <p class="pricing-price">900 ₽</p>
+                        <p class="pricing-desc">3 любых аттракциона<br>1 порция сладкой ваты</p>
+                    </div>
+
+                    <!-- Карточка 2 -->
+                    <div class="pricing-card">
+                        <p class="pricing-time">Облачный безлимит<br>до 14:00</p>
+                        <p class="pricing-price">1800 ₽</p>
+                        <p class="pricing-desc">Все аттракционы без ограничений<br>Безлимитная сладкая вата<br>Именной браслет с гравировкой<br>1 фирменный лимонад</p>
+                    </div>
+
+                    <!-- Карточка 3 -->
+                    <div class="pricing-card">
+                        <p class="pricing-time">Семейное облако<br>до 14:00</p>
+                        <p class="pricing-price">4 900 ₽</p>
+                        <p class="pricing-desc">2 взрослых + 2 ребёнка<br>Всё из «Облачного безлимита»<br>1 лимонад каждому<br>Фотосессия в подарок</p>
+                    </div>
+
+                    <!-- Карточка 4 -->
+                    <div class="pricing-card">
+                        <p class="pricing-time">Сладкий вечер<br>с 16:00 до закрытия</p>
+                        <p class="pricing-price">1200 ₽</p>
+                        <p class="pricing-desc">Все аттракционы<br>Безлимитная вата<br>Скидка 33%</p>
+                    </div>
+
+                    <!-- Карточка 5 -->
+                    <div class="pricing-card">
+                        <p class="pricing-time">Малыш (до 3х лет)<br>весь день</p>
+                        <p class="pricing-price">Бесплатно</p>
+                        <p class="pricing-desc">«Тихий уголок»<br>«Сухой бассейн»<br>Комната матери и ребёнка</p>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- Декоративные билетики (остаются на месте) -->
+            <div class="ticket ticket-1"></div>
+            <div class="ticket ticket-2"></div>
+            <div class="ticket ticket-3"></div>
+            <div class="ticket ticket-4"></div>
+        </div>
+    </section>
+
+    <!-- Подвал / Контакты -->
+    <footer class="footer" id="contacts">
+        <div class="container">
+            <h2 class="section-title pill-title">Контакты</h2>
+            <div class="contacts-grid">
+                <p>Телефон: +2(006)100-67-67</p>
+                <p>Почта: sweetWorld@candy.com</p>
+                <p class="address">Адрес: Boulevard de Poline, 77700 Dolgaya, Polinopolis.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
+</html>
