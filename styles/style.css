@@ -1,32 +1,25 @@
-/* --- Общие настройки и сброс --- */
+/* Общие настройки */
 
+/* шрифт */
 @font-face {
-    font-family: 'Comfortaa';   /* имя, которое будешь использовать */
+    font-family: 'Comfortaa';   
     src: url('../fonts/Comfortaa-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
 }
 
+/* константы цветов */
 :root {
     --cream: #F6F5EC;      /* Светло-бежевый (фон) */
     --blue: #A3BFD7;       /* Голубой (блоки) */
     --pink: #FBB2B3;       /* Розовый (шапка) */
 }
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Comfortaa', sans-serif;
-    background-color: var(--cream); /* Светло-бежевый фон */
-    line-height: 1.5;
-    overflow-x: hidden;
+    background-color: var(--cream); 
+    overflow-x: hidden; /* все время находится на нижнем слое */
 }
 
+/* блок в котором будут размещаться элементы каждого раздела */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -36,50 +29,49 @@ body {
 /* --- Шапка --- */
 .header {
     background-color: var(--pink);
-    padding: 15px 0;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    margin-bottom: 20px;
-    position: fixed;
+    padding: 15px;
+    border-radius: 0 0 30px 30px;
+    position: fixed; /* Чтобы всегда была зафиксирована шапка*/
     top: 0;          
     left: 0;          
     width: 100%;     
-    z-index: 1000;    
+    z-index: 1000;    /* Чтобы шапка находилась поверх всех элементов */
 }
 
+/* кнопки навигации */
 .nav {
     display: flex;
     justify-content: center;
     gap: 30px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* перенос элементов на новую строку в контейнере*/
 }
 
 .nav a {
-    text-decoration: none;
+    text-decoration: none; /* отключается подсветка ссылки */
     color: var(--cream);
     font-size: 16px;
-    transition: opacity 0.3s;
 }
 
 .nav a:hover {
-    opacity: 0.8;
+    color: var(--blue);
 }
 
 /* --- Главный баннер --- */
 .hero-section {
     padding: 20px 0;
+    margin-top: 100px; /* отступ сверху до шапки */
 }
 
 .hero-content {
     background-color: var(--blue);
     border-radius: 30px;
-    padding: 40px;
+    padding: 40px; /* отступ внутри от краев */
     display: flex;
     align-items: center;
     gap: 40px; /* отступы между элементами внутри контейнера*/
     color: var(--cream);
-    position: relative;
-    overflow: hidden;
+    /* position: relative; */
+    overflow: hidden; /* относительно этого блока будут размещаться */
 }
 
 /* контейнер для изображения */
