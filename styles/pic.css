@@ -3,7 +3,7 @@
     width: max(200px, 60%);
     aspect-ratio: 1 / 1;
     margin: 0 auto;
-
+    flex-direction: row;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -245,46 +245,25 @@
     overflow: hidden;
 }
 
-.back{
+.chair1::after{
+    content: "";
     position: absolute;
     width: 19%;
     height: 100%;
     border-radius: 0 100% 100% 0;
     background-color: transparent;
     border: 0.5em solid #C97C42;
-    left:-10%;
+    left:-15%;
 }
 
-.back::after{
+.chair1::before{
     content: "";
-    position: absolute;
-    width: 40%;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    background-color: #7B431C;
-    top: 68%;
-    right: -120%;
-}
-
-.sitting{
     position: absolute;
     height: 6%;
-    width:60%;
+    width:70%;
     background-color: #C97C42;
     top: 70%;
-    left: 12%;
-}
-
-
-.sitting::after{
-    content: "";
-    position: absolute;
-    width: 13%;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    background-color: #7B431C;
-    top: 11%;
-    left: 50%;
+    left: 6%;
 }
 
 .leg{
@@ -296,15 +275,26 @@
     left: 56%;
 }
 
-.leg::after{
-    content: "";
+.chair1 .circles_container_top {
     position: absolute;
-    width: 80%;
-    aspect-ratio: 1 / 1;
+    width: 50%;
+    height: 10%;
+    flex-direction: row;
+    display: flex;   
+    top: 52%;
+    bottom: 0;
+    left: -10%;
+    right: 0;
+    margin: auto;
+    gap: 10%;
+}
+
+.chair1 .circle{
+    height: 40%;
+    width: 30%;
+    background: #7B431C;
+    border: 0px;
     border-radius: 50%;
-    background-color: #7B431C;
-    top: 3%;
-    left: 5%;
 }
 
 .chair2{
@@ -316,47 +306,27 @@
     overflow: hidden;
 }
 
-
-.back2{
+.chair2::after{
+    content: "";
     position: absolute;
     width: 19%;
     height: 100%;
-    border-radius:  100% 0 0 100%;
+    border-radius: 100% 0 0 100%;
     background-color: transparent;
     border: 0.5em solid #C97C42;
-    right: -10%;
+    right: -15%;
 }  
 
-.back2::after{
+.chair2::before{
     content: "";
-    position: absolute;
-    width: 40%;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    background-color: #7B431C;
-    top: 68%;
-    left: -120%;
-}
-
-.sitting2{
     position: absolute;
     height: 6%;
-    width:60%;
+    width:70%;
     background-color: #C97C42;
     top: 70%;
-    right: 12%;
+    right: 6%;
 }
 
-.sitting2::after{
-    content: "";
-    position: absolute;
-    width: 13%;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    background-color: #7B431C;
-    top: 11%;
-    right: 50%;
-}
 .leg2{
     position: absolute;
     height: 30%;
@@ -366,13 +336,29 @@
     right: 56%;
 }
 
-.leg2::after{
-    content: "";
+.chair2 .circles_container_top{
     position: absolute;
-    width: 80%;
-    aspect-ratio: 1 / 1;
+    width: 50%;
+    height: 10%;
+    flex-direction: row;
+    display: flex;   
+    top: 52%;
+    bottom: 0;
+    right: -10%;
+    left: 0;
+    margin: auto;
+    gap: 10%;
+}
+
+.chair2 .circle{
+    height: 40%;
+    width: 30%;
+    background: #7B431C;
+    border: 0px;
     border-radius: 50%;
-    background-color: #7B431C;
-    top: 3%;
-    right: 5%;
+}
+
+.p_task1 {
+    margin: 40px 20px; 
+    color: var(--pink);
 }

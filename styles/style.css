@@ -64,6 +64,9 @@ body {
     white-space: nowrap; /* Чтобы отдельные слова не разрывались */
 }
 
+a:hover{
+    color: var(--blue);
+}
 
 /* Главный блок */
 .hero-section {
@@ -142,7 +145,6 @@ body {
     align-items: center;
     cursor: pointer;
 }
-
 .card-label {
     margin: 0 0 15px;
     color: #F8C8D0;
@@ -155,7 +157,14 @@ body {
     aspect-ratio: 1;
     overflow: hidden;
     border-radius: 15px;
+    transition: width 0.3s ease; 
 }
+
+.card-image:hover{
+    width: 102%;
+    box-shadow: 0 0 20px 10px rgba(251, 178, 179, 0.9);
+}
+
 
 .card-image img {
     display: block;
@@ -177,7 +186,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0,0,0,0.5);
     visibility: hidden;
     opacity: 0;
 }
@@ -196,10 +205,11 @@ body {
     gap: 40px;
     padding: 40px;
     overflow-y: auto;
-    background: #fff;
+    background: var(--cream);
     border-radius: 30px;
 }
 
+/* кнопка закрытия */
 .modal-close {
     position: absolute;
     top: 20px;
@@ -208,10 +218,11 @@ body {
     width: 30px;
     height: 30px;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--pink);
     border-radius: 50%;
 }
 
+/* крестик на кнопке закрытия */
 .modal-close::before,
 .modal-close::after {
     content: '';
@@ -220,31 +231,28 @@ body {
     left: 8px;
     width: 15px;
     height: 2px;
-    background: #5A5A5A;
+    background: var(--blue);
 }
 
 .modal-close::before { transform: rotate(45deg); }
 .modal-close::after { transform: rotate(-45deg); }
 
-.modal-text {
+.modal_text {
+    width: 60%;
+    height: 80%;
+}
+
+.modal-description {
     flex: 1;
     font-size: 15px;
     line-height: 1.6;
+    color: var(--pink);
 }
-
-.modal-text p {
-    margin: 0;
-}
-
 .modal-details {
     margin-top: 30px;
-    color: #888;
     font-size: 14px;
     text-align: center;
-}
-
-.modal-details p {
-    margin: 0 0 5px;
+    color: var(--blue);
 }
 
 .modal-image {
@@ -260,25 +268,12 @@ body {
     object-fit: cover;
 }
 
-.overlay-pink .modal-content {
-    background: #FDE8EC;
-}
-
-.overlay-pink .modal-text,
-.overlay-pink .modal-details {
-    color: #C97A88;
-}
-
-.overlay-blue .modal-content {
-    background: #E6EEF8;
-}
-
-.overlay-blue .modal-text,
-.overlay-blue .modal-details {
-    color: #7A9BB8;
-}
-
 /* Тарифы */
+.pricing-slider-wrapper {
+    position: relative;   /* точка отсчёта для билетиков */
+    padding-top: 60px;    /* место сверху, чтобы билетики «парили» над карточками */
+}
+
 .pricing-section {
     padding: 40px 0;
 }
@@ -288,13 +283,16 @@ body {
     width: fit-content;
     margin: 0 auto 40px;
     padding: 10px 60px;
-    background: #F8C8D0;
-    color: #fff;
+    background: var(--pink);
+    color: var(--cream);
     border-radius: 30px;
     font-size: 24px;
+    border: 5px solid var(--blue);
 }
 
 .pricing-slider {
+    width: 60%;
+    margin: 0 auto;
     display: flex;
     gap: 20px;
     padding: 20px 10px;
@@ -304,24 +302,40 @@ body {
 .pricing-card {
     flex: 0 0 280px;
     padding: 40px 30px;
-    background: #A3B8D6;
-    color: #fff;
-    border-radius: 10px;
+    background: var(--blue);
+    color: var(--cream);
+    border-radius: 30px;
     text-align: center;
 }
 
-.pricing-card p {
-    margin: 0 0 20px;
+.pricing-card:hover{
+    transform: scale(1.02);
+    box-shadow: 0 0 10px 10px rgba(163, 191, 215, 0.6);
 }
 
-.pricing-card p:last-child {
-    margin-bottom: 0;
+.tickets_decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;        
+    overflow: visible;    /* было hidden — оно обрезало билетики */
+    z-index: 5;           /* выше карточек */
+    pointer-events: none; /* чтобы не мешали кликам по карточкам */
 }
-
-.pricing-price {
-    font-size: 28px;
+  
+.tickets_decor img {
+    position: absolute;
+    width: 150px;
+    border-radius: 10px;
 }
-
+  
+.tickets_decor img:nth-child(1) { top: 10%;  left: 0%; transform: rotate(30deg);}
+.tickets_decor img:nth-child(2) { top: 50%;  left: 0%; transform: rotate(-30deg);}
+.tickets_decor img:nth-child(3) { top: 90%;  left: 0%; transform: rotate(30deg);}
+.tickets_decor img:nth-child(4) { top: 10%;  right: 0%; transform: rotate(-30deg);}
+.tickets_decor img:nth-child(5) { top: 50%;  right: 0%; transform: rotate(30deg);}
+.tickets_decor img:nth-child(6) { top: 90%;  right: 0%; transform: rotate(-30deg);}
 /* Подвал */
 .footer {
     padding: 40px 0 60px;
@@ -332,7 +346,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    color: #A3B8D6;
+    color: var(--blue);
     font-size: 16px;
 }
 
@@ -373,6 +387,8 @@ body {
         top: 10px;
         left: 10px;
     }
+
+    .tickets_decor {display: none;}
 }
 
 @media (max-width: 600px) {
@@ -400,4 +416,6 @@ body {
     .contacts-grid {
         font-size: 14px;
     }
+
+    .tickets_decor {display: none;}
 }
