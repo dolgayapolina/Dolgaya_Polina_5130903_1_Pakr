@@ -1,153 +1,126 @@
-/* Общие настройки */
-
-/* шрифт */
 @font-face {
-    font-family: 'Comfortaa';   
+    font-family: Comfortaa;
     src: url('../fonts/Comfortaa-VariableFont_wght.ttf') format('truetype');
 }
 
-/* константы цветов */
 :root {
-    --cream: #F6F5EC;      /* Светло-бежевый (фон) */
-    --blue: #A3BFD7;       /* Голубой (блоки) */
-    --pink: #FBB2B3;       /* Розовый (шапка) */
+    --cream: #F6F5EC;
+    --blue: #A3BFD7;
+    --pink: #FBB2B3;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Comfortaa', sans-serif;
-    background-color: var(--cream); 
-    overflow-x: hidden; /* все время находится на нижнем слое */
+    margin: 0;
+    font-family: Comfortaa, sans-serif;
+    background: var(--cream);
+    color: #5A5A5A;
 }
 
-/* блок в котором будут размещаться элементы каждого раздела */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* --- Шапка --- */
+/* Шапка */
 .header {
-    background-color: var(--pink);
-    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+    background: var(--pink);
     border-radius: 0 0 30px 30px;
-    position: fixed; /* Чтобы всегда была зафиксирована шапка*/
-    top: 0;          
-    left: 0;          
-    width: 100%;     
-    z-index: 1000;    /* Чтобы шапка находилась поверх всех элементов */
 }
 
-/* кнопки навигации */
+/* Контейнер шапки */
+.header .container {
+    display: flex !important;
+    flex-direction: row !important; /* Строго в один ряд */
+    align-items: center; /* Выравнивание ваты по центру относительно блока с ссылками */
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* Навигация */
 .nav {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap; /* перенос элементов на новую строку в контейнере*/
+    display: flex !important;
+    flex-direction: row !important; /* Ссылки идут в ряд */
+    justify-content: flex-end; /* Ссылки прижимаются к правому краю */
+    align-items: center;
+    gap: 10px 20px; /* 10px между строками, 20px между ссылками */
+    flex-wrap: wrap !important; /* РАЗРЕШАЕТ ссылкам переноситься в несколько строк */
 }
 
 .nav a {
-    text-decoration: none; /* отключается подсветка ссылки */
     color: var(--cream);
+    text-decoration: none;
     font-size: 16px;
+    white-space: nowrap; /* Чтобы отдельные слова не разрывались */
 }
 
-.nav a:hover {
-    color: var(--blue);
-}
 
-/* --- Главный баннер --- */
+/* Главный блок */
 .hero-section {
+    margin-top: 100px;
     padding: 20px 0;
-    margin-top: 100px; /* отступ сверху до шапки */
 }
 
 .hero-content {
-    background-color: var(--blue);
-    border-radius: 30px;
-    padding: 40px; /* отступ внутри от краев */
     display: flex;
     align-items: center;
-    gap: 40px; /* отступы между элементами внутри контейнера*/
+    gap: 40px;
+    padding: 40px;
+    background: var(--blue);
+    border-radius: 30px;
     color: var(--cream);
-    /* position: relative; */
-    overflow: hidden; /* относительно этого блока будут размещаться */
 }
 
-/* контейнер для изображения */
 .hero-image {
     flex: 0 0 300px;
 }
 
-/* как изображение находится в контейнере */
 .hero-image img {
-    width: 100%;
-    height: auto;
     display: block;
+    width: 100%;
 }
 
 .hero-text h1 {
+    margin: 0 0 20px;
     font-size: 28px;
-    margin-bottom: 20px;
     font-weight: normal;
 }
 
 .hero-text p {
+    margin: 0;
     font-size: 14px;
     line-height: 1.6;
     text-align: justify;
 }
 
-/* --- Секция Аттракционы --- */
+/* Аттракционы */
 .main-content {
     padding: 60px 0;
-    position: relative;
-    overflow: hidden; /* Обрезает всё, что вылезает за пределы секции */
-
-}
-
-/* Левое облако */
-.main-content::before {
-    content: '';
-    position: absolute;
-    top: -50px;              /* Отступ сверху от начала секции */
-    left: -100px;           /* Сдвигаем влево за край экрана — облако «выходит» из края */
-    width: 600px;         
-    height: 250px;
-    background-image: url('../images/cloud.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-/* Правое облако */
-.main-content::after {
-    content: '';
-    position: absolute;
-    top: -50px;             /* Можно сместить ниже, чтобы облака были на разной высоте */
-    right: -100px;          /* Сдвигаем вправо за край */
-    width: 600px;      
-    height: 300px;
-    background-image: url('../images/cloud.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    transform: scaleX(-1);  /* Отзеркаливаем */
 }
 
 .section-title {
+    margin: 0 0 50px;
     text-align: center;
     color: var(--pink);
     font-size: 32px;
-    margin-bottom: 50px;
     font-weight: normal;
 }
 
 .block-title {
+    margin: 0 0 30px;
     text-align: center;
     color: var(--blue);
     font-size: 24px;
-    margin-bottom: 30px;
     font-weight: normal;
 }
 
@@ -163,271 +136,193 @@ body {
     margin: 0 auto;
 }
 
-/* Карточка теперь работает как кнопка */
 .card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: pointer; /* Показывает, что можно кликнуть */
+    cursor: pointer;
 }
 
 .card-label {
+    margin: 0 0 15px;
     color: #F8C8D0;
     font-size: 16px;
-    margin-bottom: 15px;
     text-align: center;
-    transition: color 0.3s;
 }
 
 .card-image {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    background-color: #E0E0E0;
-    border-radius: 15px;
+    aspect-ratio: 1;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 15px;
 }
 
 .card-image img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 
-.card:hover .card-image {
-    transform: scale(1.03);
-}
-
-/* ========================================== */
-/* СТИЛИ ДЛЯ МОДАЛЬНЫХ ОКОН (ОВЕРЛЕЕВ)        */
-/* ========================================== */
-
-/* Скрываем чекбоксы, которые управляют окнами */
+/* Модальные окна */
 .modal-toggle {
     display: none;
 }
 
-/* Фон оверлея */
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Затемнение фона */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    inset: 0;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
 }
 
-/* Показываем оверлей, когда чекбокс отмечен */
 .modal-toggle:checked + .modal-overlay {
-    opacity: 1;
     visibility: visible;
+    opacity: 1;
 }
 
-/* Контент модального окна */
 .modal-content {
-    background-color: #FFFFFF; /* Белый фон для окна */
-    border-radius: 30px;
+    position: relative;
+    display: flex;
     width: 100%;
     max-width: 900px;
-    display: flex;
-    padding: 40px;
+    max-height: 90vh;
     gap: 40px;
-    position: relative;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-    max-height: 90vh; /* Ограничение высоты */
-    overflow-y: auto; /* Скролл, если текст не влезает */
+    padding: 40px;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 30px;
 }
 
-.modal-toggle:checked + .modal-overlay .modal-content {
-    transform: translateY(0);
-}
-
-/* Кнопка закрытия (крестик) */
 .modal-close {
     position: absolute;
     top: 20px;
     left: 20px;
+    z-index: 2;
     width: 30px;
     height: 30px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s;
-    z-index: 10;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
 }
 
 .modal-close::before,
 .modal-close::after {
     content: '';
     position: absolute;
+    top: 14px;
+    left: 8px;
     width: 15px;
     height: 2px;
-    background-color: #5A5A5A;
+    background: #5A5A5A;
 }
 
 .modal-close::before { transform: rotate(45deg); }
 .modal-close::after { transform: rotate(-45deg); }
 
-.modal-close:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-/* Текстовая часть */
 .modal-text {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     font-size: 15px;
-    color: #5A5A5A;
     line-height: 1.6;
 }
 
-/* Нижние характеристики */
+.modal-text p {
+    margin: 0;
+}
+
 .modal-details {
     margin-top: 30px;
-    font-size: 14px;
     color: #888;
+    font-size: 14px;
     text-align: center;
 }
 
 .modal-details p {
-    margin-bottom: 5px;
+    margin: 0 0 5px;
 }
 
-/* Картинка в модалке */
 .modal-image {
     flex: 0 0 45%;
-    border-radius: 20px;
     overflow: hidden;
-    background-color: #E0E0E0;
+    border-radius: 20px;
 }
 
 .modal-image img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 
-/* Цветовые вариации оверлеев (по макетам) */
 .overlay-pink .modal-content {
-    background-color: #FDE8EC; /* Светло-розовый фон */
+    background: #FDE8EC;
 }
-.overlay-pink .modal-text { color: #C97A88; } /* Розоватый текст */
-.overlay-pink .modal-details { color: #C97A88; }
+
+.overlay-pink .modal-text,
+.overlay-pink .modal-details {
+    color: #C97A88;
+}
 
 .overlay-blue .modal-content {
-    background-color: #E6EEF8; /* Светло-голубой фон */
+    background: #E6EEF8;
 }
-.overlay-blue .modal-text { color: #7A9BB8; } /* Голубоватый текст */
-.overlay-blue .modal-details { color: #7A9BB8; }
 
+.overlay-blue .modal-text,
+.overlay-blue .modal-details {
+    color: #7A9BB8;
+}
 
-/* --- Секция Тарифы --- */
+/* Тарифы */
 .pricing-section {
     padding: 40px 0;
-    position: relative;
 }
 
 .pill-title {
-    background-color: #F8C8D0;
-    color: #FFFFFF;
-    display: inline-block;
+    display: block;
+    width: fit-content;
+    margin: 0 auto 40px;
     padding: 10px 60px;
+    background: #F8C8D0;
+    color: #fff;
     border-radius: 30px;
     font-size: 24px;
-    margin-bottom: 40px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-}
-
-.pricing-section .pill-title::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -20px;
-    right: -20px;
-    bottom: -5px;
-    background-color: #A3B8D6;
-    border-radius: 35px;
-    z-index: -1;
-}
-
-/* --- Слайдер тарифов (CSS Scroll Snap) --- */
-.pricing-slider-wrapper {
-    position: relative;
-    width: 100%;
-    margin-bottom: 40px;
 }
 
 .pricing-slider {
     display: flex;
     gap: 20px;
-    overflow-x: auto; /* Включает горизонтальную прокрутку */
     padding: 20px 10px;
-    scroll-snap-type: x mandatory; /* Прилипание карточек при прокрутке */
-    -webkit-overflow-scrolling: touch; /* Плавная прокрутка на iOS */
-    
-    /* Скрытие полосы прокрутки для разных браузеров */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE и Edge */
+    overflow-x: auto;
 }
 
-.pricing-slider::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-}
-
-/* Стили самих карточек */
 .pricing-card {
-    background-color: rgba(163, 184, 214, 0.8); /* Полупрозрачный голубой, как на скриншоте */
-    color: #FFFFFF;
+    flex: 0 0 280px;
     padding: 40px 30px;
+    background: #A3B8D6;
+    color: #fff;
     border-radius: 10px;
     text-align: center;
-    width: 280px; /* Фиксированная ширина карточки */
-    flex-shrink: 0; /* Запрещает карточкам сжиматься */
-    scroll-snap-align: center; /* Центрирование карточки при прилипании */
-    box-shadow: 0 5px 15px rgba(163, 184, 214, 0.3);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s;
 }
 
-/* Декоративные билетики (остаются на месте) */
-.ticket {
-    position: absolute;
-    width: 100px;
-    height: 40px;
-    background-color: #F8C8D0;
-    border: 2px dashed #FFFFFF;
-    border-radius: 5px;
-    opacity: 0.8;
+.pricing-card p {
+    margin: 0 0 20px;
 }
-.ticket-1 { top: 10%; left: 5%; transform: rotate(-15deg); }
-.ticket-2 { top: 20%; right: 5%; transform: rotate(15deg); }
-.ticket-3 { bottom: 10%; left: 10%; transform: rotate(10deg); }
-.ticket-4 { bottom: 20%; right: 10%; transform: rotate(-10deg); }
 
-/* --- Подвал --- */
+.pricing-card p:last-child {
+    margin-bottom: 0;
+}
+
+.pricing-price {
+    font-size: 28px;
+}
+
+/* Подвал */
 .footer {
     padding: 40px 0 60px;
     text-align: center;
@@ -441,35 +336,68 @@ body {
     font-size: 16px;
 }
 
-/* --- Адаптивность --- */
-
+/* Планшет и телефон */
 @media (max-width: 900px) {
-    .hero-content { flex-direction: column; text-align: center; padding: 30px; }
-    .hero-image { flex: 0 0 auto; max-width: 250px; }
-    .hero-text p { text-align: center; }
-    .cards-grid { gap: 20px; }
-    .main-content::before,
-    .main-content::after {
-        display: none; /* Полностью скрываем облака на планшетах и телефонах */
+    .hero-content {
+        flex-direction: column;
+        padding: 30px;
+        text-align: center;
     }
-    /* Адаптив для модальных окон */
+
+    .hero-image {
+        flex: none;
+        max-width: 250px;
+    }
+
+    .hero-text p {
+        text-align: center;
+    }
+
+    .cards-grid {
+        gap: 20px;
+    }
+
     .modal-content {
-        flex-direction: column-reverse; /* Картинка сверху, текст снизу */
+        flex-direction: column-reverse;
         padding: 20px;
         gap: 20px;
     }
-    .modal-image { flex: 0 0 200px; width: 100%; }
-    .modal-close { top: 10px; left: 10px; }
 
+    .modal-image {
+        flex: none;
+        width: 100%;
+        height: 200px;
+    }
+
+    .modal-close {
+        top: 10px;
+        left: 10px;
+    }
 }
 
 @media (max-width: 600px) {
-    .nav { gap: 15px; }
-    .block-title { font-size: 20px; }
-    .cards-grid { grid-template-columns: 1fr; }
-    .pill-title { padding: 8px 30px; font-size: 20px; }
-    .pricing-card { padding: 30px 20px; }
-    .pricing-price { font-size: 28px; }
-    .ticket { display: none; }
-    .contacts-grid { font-size: 14px; }
+    .nav {
+        gap: 15px;
+    }
+
+    .block-title {
+        font-size: 20px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pill-title {
+        padding: 8px 30px;
+        font-size: 20px;
+    }
+
+    .pricing-card {
+        padding: 30px 20px;
+    }
+
+    .contacts-grid {
+        font-size: 14px;
+    }
 }

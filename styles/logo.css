@@ -1,0 +1,95 @@
+/* Контейнер ваты и текста */
+.cotton-candy {
+    display: flex;
+    align-items: center; 
+    gap: 15px; 
+    height: 75px;
+}
+
+/* Обертка для рисунка ваты (задает четкие границы для Flexbox) */
+.cotton-candy-icon {
+    position: relative;
+    width: 50px;  
+    height: 60px; 
+    flex-shrink: 0;
+}
+
+.cotton-candy-icon::after{
+    content: "";
+    position: absolute;
+    width: 60%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: #f7e4e5;
+    top: 0%;
+    left: 30%;
+}
+
+/* Облако сахарной ваты (основная часть) */
+.cotton-candy-icon .cloud {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    background-color: #f7e4e5;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.cloud::after{
+    content: "";
+    position: absolute;
+    width: 60%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: #f7e4e5;
+    top: 30%;
+    right: -10%;
+}
+
+.cloud::before{
+    content: "";
+    position: absolute;
+    width: 60%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: #f7e4e5;
+    top: 0%;
+    left: -10%;
+}
+
+/* Деревянная палочка */
+.cotton-candy-icon .stick {
+    position: absolute;
+    width: 4px;
+    height: 30px;
+    background-color: #615112;
+    bottom: 2px;
+    left: 17px;
+    transform: rotate(22deg);
+    border-radius: 2px;
+    z-index: 1;
+}
+
+/* Обертка ссылки */
+.logo-link {
+    display: inline-block;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+/* Стили для названия рядом с ватой */
+.cotton-candy h1 {
+    margin: 0;
+    color: var(--cream);
+    font-size: 20px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .cotton-candy h1 { 
+        display: none; 
+    }
+}
