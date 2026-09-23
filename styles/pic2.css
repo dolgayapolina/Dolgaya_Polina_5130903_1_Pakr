@@ -1,0 +1,174 @@
+/* Контейнер */
+.container_picture {
+    position: relative;
+    width: max(200px, 30%);
+    aspect-ratio: 1;
+    margin: 10% auto 0;
+    overflow: hidden;
+}
+
+/* Контейнер задания 2 */
+.background {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(to top, #8adfe8 0%, #fff 60%, transparent);
+    border: .2em solid #000;
+    overflow: hidden;
+}
+
+/* Состояние после клика */
+.text-toggle {
+    display: none;
+}
+
+/* Картинки man1, man2, man3 */
+.frames {
+    position: relative;
+    width: 80%;
+    height: 80%;
+}
+
+.frame {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+}
+
+.frame.active {
+    opacity: 1;
+}
+
+/* man1 → man2 → man3 при наведении */
+.background:hover .frame {
+    animation: walk .6s steps(1) infinite;
+}
+
+.background:hover .frame:nth-child(1) { animation-delay: 0s; }
+.background:hover .frame:nth-child(2) { animation-delay: .2s; }
+.background:hover .frame:nth-child(3) { animation-delay: .4s; }
+
+@keyframes walk {
+    0%, 33.33% { opacity: 1; }
+    33.34%, 100% { opacity: 0; }
+}
+
+/* Надпись появляется при наведении */
+.text {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    transform: translateX(200%);
+    transition: transform .3s;
+    z-index: 10;
+}
+
+.background:hover .text {
+    transform: translateX(0);
+}
+
+/* Звезда */
+.star {
+    width: 4em;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+.star:hover {
+    animation: star-move 2s infinite;
+}
+
+@keyframes star-move {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    20% {
+        transform: translate(20%, 0) rotate(45deg);
+    }
+    40% {
+        transform: translate(-10%, -20%) rotate(0deg);
+    }
+    60% {
+        transform: translate(-15%, 20%) rotate(10deg);
+    }
+    80% {
+        transform: translate(-20%, 0%) rotate(10deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+/* После клика звезда исчезает */
+.text-toggle:checked ~ .text .star {
+    opacity: 0;
+    transform: scale(0);
+    transition: .5s;
+    pointer-events: none;
+}
+
+/* Смена текста */
+.text-second {
+    display: none;
+}
+
+.text-toggle:checked ~ .text .text-first {
+    display: none;
+}
+
+.text-toggle:checked ~ .text .text-second {
+    display: inline;
+}
+
+.text-label {
+    cursor: pointer;
+}
+
+/* Кисточка появляется и двигается после клика */
+.brush {
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    width: 10%;
+    height: 10%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.text-toggle:checked ~ .brush {
+    animation: brush-move 3s;
+}
+
+@keyframes brush-move {
+    0%   { transform: translate(0%, 0)    }
+    10%  { transform: translate(100%, 40%) }
+    20%  { transform: translate(200%, 0%) }
+    30%  { transform: translate(300%, 40%)   }
+    40%  { transform: translate(400%, 0%)  }
+    50%  { transform: translate(500%, 40%)  }
+    60%  { transform: translate(600%, 0%)  }
+    70%  { transform: translate(700%, 40%)  }
+    80%  { transform: translate(800%, 0%)  }
+    90%  { transform: translate(900%, 40%)  }
+    100% { transform: translate(1100%, 0%)  }
+}
+
+/* Пульсация после клика */
+.container_picture:has(.text-toggle:checked) {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    50% { transform: scale(1.05); }
+}

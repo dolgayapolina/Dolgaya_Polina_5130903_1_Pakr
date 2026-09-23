@@ -7,23 +7,26 @@
     <!-- подключение базового стиля -->
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/pic.css">
+    <link rel="stylesheet" href="../styles/pic2.css">
     <link rel="stylesheet" href="../styles/logo.css">
 </head>
 
 <body>
     <header class="header">
         <div class="container">
-            <a href="/index.html" class="logo-link">
+            <a href="../index.html" class="logo-link">
                 <div class="cotton-candy">
                     <div class="cotton-candy-icon">
                         <div class="cloud"></div>
                         <div class="stick"></div>
                     </div>
+                    
                     <h1>Облако счастья</h1>
                 </div>
             </a>
             <nav class="nav">
                 <a href="#task1">Задание 1</a>
+                <a href="#task2">Задание 2</a>
             </nav>
         </div>
     </header>
@@ -100,6 +103,31 @@
         Стол и стулья по бокам — это приглашение остановиться, передохнуть и попробовать ту самую «порцию счастья». Вся композиция выдержана в пастельных, пудровых тонах (зеленый, розовый, голубой), которые создают ощущение уюта, безопасности и детской радости.
     </p>
 
+
+    <div class="container_picture" id="task2">
+        <div class="background">
+
+            <!-- Чекбокс вынесен на уровень .background, чтобы ~ .brush и ~ .text работали -->
+            <input type="checkbox" id="text-toggle" class="text-toggle">
+
+            <div class="text">
+                <label for="text-toggle" class="text-label">
+                    <span class="text-first">Иду за мечтой</span>
+                    <span class="text-second">Мечта рядом</span>
+                </label>
+                <img src="../images/zvezda.png" class="star">
+            </div>
+
+            <img src="../images/brush.png" class="brush">
+
+            <div class="frames">
+                <img src="../images/man1.png" class="frame active">
+                <img src="../images/man2.png" class="frame">
+                <img src="../images/man3.png" class="frame">
+            </div>
+            
+        </div>
+    </div>
     <footer class="footer" id="contacts">
         <div class="container">
             <h2 class="section-title pill-title">Контакты</h2>
