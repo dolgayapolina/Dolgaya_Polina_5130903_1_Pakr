@@ -1,4 +1,4 @@
-/* Контейнер */
+
 .container_picture {
     position: relative;
     width: max(200px, 30%);
@@ -7,7 +7,7 @@
     overflow: hidden;
 }
 
-/* Контейнер задания 2 */
+
 .background {
     position: relative;
     display: flex;
@@ -20,12 +20,12 @@
     overflow: hidden;
 }
 
-/* Состояние после клика */
-.text-toggle {
+
+.text-check {
     display: none;
 }
 
-/* Картинки man1, man2, man3 */
+
 .frames {
     position: relative;
     width: 80%;
@@ -109,7 +109,7 @@
 }
 
 
-.text-toggle:checked ~ .text .star {
+.text-check:checked ~ .text .star {
     opacity: 0;
 }
 
@@ -118,11 +118,11 @@
     display: none;
 }
 
-.text-toggle:checked ~ .text .text-first {
+.text-check:checked ~ .text .text-first {
     display: none;
 }
 
-.text-toggle:checked ~ .text .text-second {
+.text-check:checked ~ .text .text-second {
     display: inline;
 }
 
@@ -136,7 +136,7 @@
     pointer-events: none;
 }
 
-.text-toggle:checked ~ .brush {
+.text-check:checked ~ .brush {
     animation: brush-move 3s;
 }
 
@@ -154,10 +154,14 @@
     100% { transform: translate(1100%, 0%)  }
 }
 
-.container_picture:has(.text-toggle:checked) {
+.container_picture:has(.text-check:checked) {
     animation: pulse 1.5s ease-in-out infinite;
 }
 
 @keyframes pulse {
     50% { transform: scale(1.05); }
+}
+
+.text-check ~ .background:hover .frames{
+    animation: none;
 }

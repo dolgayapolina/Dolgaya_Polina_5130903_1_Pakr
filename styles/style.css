@@ -9,10 +9,6 @@
     --pink: #FBB2B3;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
     font-family: Comfortaa, sans-serif;
@@ -21,9 +17,9 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 75em;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 1.25em;
 }
 
 /* Шапка */
@@ -33,35 +29,35 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 10px 0;
+    padding: 0.625em 0;
     background: var(--pink);
-    border-radius: 0 0 30px 30px;
+    border-radius: 0 0 1.875em 1.875em;
 }
 
 /* Контейнер шапки */
 .header .container {
     display: flex !important;
-    flex-direction: row !important; /* Строго в один ряд */
-    align-items: center; /* Выравнивание ваты по центру относительно блока с ссылками */
+    flex-direction: row !important;
+    align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    gap: 0.9375em;
 }
 
 /* Навигация */
 .nav {
     display: flex !important;
-    flex-direction: row !important; /* Ссылки идут в ряд */
-    justify-content: flex-end; /* Ссылки прижимаются к правому краю */
+    flex-direction: row !important;
+    justify-content: flex-end;
     align-items: center;
-    gap: 10px 20px; /* 10px между строками, 20px между ссылками */
-    flex-wrap: wrap !important; /* РАЗРЕШАЕТ ссылкам переноситься в несколько строк */
+    gap: 0.625em 1.25em;
+    flex-wrap: wrap !important;
 }
 
 .nav a {
     color: var(--cream);
     text-decoration: none;
-    font-size: 16px;
-    white-space: nowrap; /* Чтобы отдельные слова не разрывались */
+    font-size: 1em;
+    white-space: nowrap;
 }
 
 a:hover{
@@ -70,22 +66,22 @@ a:hover{
 
 /* Главный блок */
 .hero-section {
-    margin-top: 100px;
-    padding: 20px 0;
+    margin-top: 6.25em;
+    padding: 1.25em 0;
 }
 
 .hero-content {
     display: flex;
     align-items: center;
-    gap: 40px;
-    padding: 40px;
+    gap: 2.5em;
+    padding: 2.5em;
     background: var(--blue);
-    border-radius: 30px;
+    border-radius: 1.875em;
     color: var(--cream);
 }
 
 .hero-image {
-    flex: 0 0 300px;
+    flex: 0 0 18.75em;
 }
 
 .hero-image img {
@@ -94,48 +90,48 @@ a:hover{
 }
 
 .hero-text h1 {
-    margin: 0 0 20px;
-    font-size: 28px;
+    margin: 0 0 1.25em;
+    font-size: 1.75em;
     font-weight: normal;
 }
 
 .hero-text p {
     margin: 0;
-    font-size: 14px;
+    font-size: 0.875em;
     line-height: 1.6;
     text-align: justify;
 }
 
 /* Аттракционы */
 .main-content {
-    padding: 60px 0;
+    padding: 3.75em 0;
 }
 
 .section-title {
-    margin: 0 0 50px;
+    margin: 0 0 3.125em;
     text-align: center;
     color: var(--pink);
-    font-size: 32px;
+    font-size: 2em;
     font-weight: normal;
 }
 
 .block-title {
-    margin: 0 0 30px;
+    margin: 0 0 1.875em;
     text-align: center;
     color: var(--blue);
-    font-size: 24px;
+    font-size: 1.5em;
     font-weight: normal;
 }
 
 .attraction-block {
-    margin-bottom: 70px;
+    margin-bottom: 4.375em;
 }
 
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    max-width: 900px;
+    gap: 2.5em;
+    max-width: 56.25em;
     margin: 0 auto;
 }
 
@@ -146,9 +142,9 @@ a:hover{
     cursor: pointer;
 }
 .card-label {
-    margin: 0 0 15px;
+    margin: 0 0 0.9375em;
     color: #F8C8D0;
-    font-size: 16px;
+    font-size: 1em;
     text-align: center;
 }
 
@@ -156,13 +152,13 @@ a:hover{
     width: 100%;
     aspect-ratio: 1;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 0.9375em;
     transition: width 0.3s ease; 
 }
 
 .card-image:hover{
     width: 102%;
-    box-shadow: 0 0 20px 10px rgba(251, 178, 179, 0.9);
+    box-shadow: 0 0 1.25em 0.625em rgba(251, 178, 179, 0.9);
 }
 
 
@@ -185,7 +181,7 @@ a:hover{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 1.25em;
     background: rgba(0,0,0,0.5);
     visibility: hidden;
     opacity: 0;
@@ -200,23 +196,23 @@ a:hover{
     position: relative;
     display: flex;
     width: 100%;
-    max-width: 900px;
+    max-width: 56.25em;
     max-height: 90vh;
-    gap: 40px;
-    padding: 40px;
+    gap: 2.5em;
+    padding: 2.5em;
     overflow-y: auto;
     background: var(--cream);
-    border-radius: 30px;
+    border-radius: 1.875em;
 }
 
 /* кнопка закрытия */
 .modal-close {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 1.25em;
+    left: 1.25em;
     z-index: 2;
-    width: 30px;
-    height: 30px;
+    width: 1.875em;
+    height: 1.875em;
     cursor: pointer;
     background: var(--pink);
     border-radius: 50%;
@@ -227,10 +223,10 @@ a:hover{
 .modal-close::after {
     content: '';
     position: absolute;
-    top: 14px;
-    left: 8px;
-    width: 15px;
-    height: 2px;
+    top: 0.875em;
+    left: 0.5em;
+    width: 0.9375em;
+    height: 0.125em;
     background: var(--blue);
 }
 
@@ -238,19 +234,21 @@ a:hover{
 .modal-close::after { transform: rotate(-45deg); }
 
 .modal_text {
-    width: 60%;
-    height: 80%;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-description {
     flex: 1;
-    font-size: 15px;
+    font-size: 0.9375em;
     line-height: 1.6;
     color: var(--pink);
 }
 .modal-details {
-    margin-top: 30px;
-    font-size: 14px;
+    margin-top: 1.875em;
+    font-size: 0.875em;
     text-align: center;
     color: var(--blue);
 }
@@ -258,7 +256,7 @@ a:hover{
 .modal-image {
     flex: 0 0 45%;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 1.25em;
 }
 
 .modal-image img {
@@ -270,47 +268,47 @@ a:hover{
 
 /* Тарифы */
 .pricing-slider-wrapper {
-    position: relative;   /* точка отсчёта для билетиков */
-    padding-top: 60px;    /* место сверху, чтобы билетики «парили» над карточками */
+    position: relative;
+    padding-top: 3.75em;
 }
 
 .pricing-section {
-    padding: 40px 0;
+    padding: 2.5em 0;
 }
 
 .pill-title {
     display: block;
     width: fit-content;
-    margin: 0 auto 40px;
-    padding: 10px 60px;
+    margin: 0 auto 2.5em;
+    padding: 0.625em 3.75em;
     background: var(--pink);
     color: var(--cream);
-    border-radius: 30px;
-    font-size: 24px;
-    border: 5px solid var(--blue);
+    border-radius: 1.875em;
+    font-size: 1.5em;
+    border: 0.3125em solid var(--blue);
 }
 
 .pricing-slider {
     width: 60%;
     margin: 0 auto;
     display: flex;
-    gap: 20px;
-    padding: 20px 10px;
+    gap: 1.25em;
+    padding: 1.25em 0.625em;
     overflow-x: auto;
 }
 
 .pricing-card {
-    flex: 0 0 280px;
-    padding: 40px 30px;
+    flex: 0 0 17.5em;
+    padding: 2.5em 1.875em;
     background: var(--blue);
     color: var(--cream);
-    border-radius: 30px;
+    border-radius: 1.875em;
     text-align: center;
 }
 
 .pricing-card:hover{
     transform: scale(1.02);
-    box-shadow: 0 0 10px 10px rgba(163, 191, 215, 0.6);
+    box-shadow: 0 0 0.625em 0.625em rgba(163, 191, 215, 0.6);
 }
 
 .tickets_decor {
@@ -319,15 +317,15 @@ a:hover{
     left: 0;
     width: 100%;
     height: 100%;        
-    overflow: visible;    /* было hidden — оно обрезало билетики */
-    z-index: 5;           /* выше карточек */
-    pointer-events: none; /* чтобы не мешали кликам по карточкам */
+    overflow: visible;
+    z-index: 5;
+    pointer-events: none;
 }
   
 .tickets_decor img {
     position: absolute;
-    width: 150px;
-    border-radius: 10px;
+    width: 9.375em;
+    border-radius: 0.625em;
 }
   
 .tickets_decor img:nth-child(1) { top: 10%;  left: 0%; transform: rotate(30deg);}
@@ -338,29 +336,29 @@ a:hover{
 .tickets_decor img:nth-child(6) { top: 90%;  right: 0%; transform: rotate(-30deg);}
 /* Подвал */
 .footer {
-    padding: 40px 0 60px;
+    padding: 2.5em 0 3.75em;
     text-align: center;
 }
 
 .contacts-grid {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.625em;
     color: var(--blue);
-    font-size: 16px;
+    font-size: 1em;
 }
 
 /* Планшет и телефон */
-@media (max-width: 900px) {
+@media (max-width: 56.25em) {
     .hero-content {
         flex-direction: column;
-        padding: 30px;
+        padding: 1.875em;
         text-align: center;
     }
 
     .hero-image {
         flex: none;
-        max-width: 250px;
+        max-width: 15.625em;
     }
 
     .hero-text p {
@@ -368,36 +366,36 @@ a:hover{
     }
 
     .cards-grid {
-        gap: 20px;
+        gap: 1.25em;
     }
 
     .modal-content {
         flex-direction: column-reverse;
-        padding: 20px;
-        gap: 20px;
+        padding: 1.25em;
+        gap: 1.25em;
     }
 
     .modal-image {
         flex: none;
         width: 100%;
-        height: 200px;
+        height: 12.5em;
     }
 
     .modal-close {
-        top: 10px;
-        left: 10px;
+        top: 0.625em;
+        left: 0.625em;
     }
 
     .tickets_decor {display: none;}
 }
 
-@media (max-width: 600px) {
+@media (max-width: 37.5em) {
     .nav {
-        gap: 15px;
+        gap: 0.9375em;
     }
 
     .block-title {
-        font-size: 20px;
+        font-size: 1.25em;
     }
 
     .cards-grid {
@@ -405,16 +403,16 @@ a:hover{
     }
 
     .pill-title {
-        padding: 8px 30px;
-        font-size: 20px;
+        padding: 0.5em 1.875em;
+        font-size: 1.25em;
     }
 
     .pricing-card {
-        padding: 30px 20px;
+        padding: 1.875em 1.25em;
     }
 
     .contacts-grid {
-        font-size: 14px;
+        font-size: 0.875em;
     }
 
     .tickets_decor {display: none;}
