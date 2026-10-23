@@ -10,10 +10,8 @@
 }
 
 body {
-    margin: 0;
     font-family: Comfortaa, sans-serif;
     background: var(--cream);
-    color: #5A5A5A;
 }
 
 .container {
@@ -28,7 +26,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 1000; /* всегда сверху */
     padding: 0.625em 0;
     background: var(--pink);
     border-radius: 0 0 1.875em 1.875em;
@@ -36,28 +34,26 @@ body {
 
 /* Контейнер шапки */
 .header .container {
-    display: flex !important;
-    flex-direction: row !important;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* расположение элементов по краям */
     gap: 0.9375em;
 }
 
 /* Навигация */
 .nav {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end; /* расположение элементов cправа */
     align-items: center;
     gap: 0.625em 1.25em;
-    flex-wrap: wrap !important;
+    flex-wrap: wrap; /* при нехватке места элементы перенесутся */
 }
 
 .nav a {
     color: var(--cream);
     text-decoration: none;
     font-size: 1em;
-    white-space: nowrap;
 }
 
 a:hover{
@@ -80,11 +76,7 @@ a:hover{
     color: var(--cream);
 }
 
-.hero-image {
-    flex: 0 0 18.75em;
-}
-
-.hero-image img {
+#hero-image {
     display: block;
     width: 100%;
 }
@@ -92,14 +84,12 @@ a:hover{
 .hero-text h1 {
     margin: 0 0 1.25em;
     font-size: 1.75em;
-    font-weight: normal;
 }
 
 .hero-text p {
     margin: 0;
     font-size: 0.875em;
     line-height: 1.6;
-    text-align: justify;
 }
 
 /* Аттракционы */
@@ -193,14 +183,12 @@ a:hover{
 }
 
 .modal-content {
-    position: relative;
     display: flex;
     width: 100%;
     max-width: 56.25em;
     max-height: 90vh;
     gap: 2.5em;
     padding: 2.5em;
-    overflow-y: auto;
     background: var(--cream);
     border-radius: 1.875em;
 }
@@ -310,30 +298,6 @@ a:hover{
     transform: scale(1.02);
     box-shadow: 0 0 0.625em 0.625em rgba(163, 191, 215, 0.6);
 }
-
-.tickets_decor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;        
-    overflow: visible;
-    z-index: 5;
-    pointer-events: none;
-}
-  
-.tickets_decor img {
-    position: absolute;
-    width: 9.375em;
-    border-radius: 0.625em;
-}
-  
-.tickets_decor img:nth-child(1) { top: 10%;  left: 0%; transform: rotate(30deg);}
-.tickets_decor img:nth-child(2) { top: 50%;  left: 0%; transform: rotate(-30deg);}
-.tickets_decor img:nth-child(3) { top: 90%;  left: 0%; transform: rotate(30deg);}
-.tickets_decor img:nth-child(4) { top: 10%;  right: 0%; transform: rotate(-30deg);}
-.tickets_decor img:nth-child(5) { top: 50%;  right: 0%; transform: rotate(30deg);}
-.tickets_decor img:nth-child(6) { top: 90%;  right: 0%; transform: rotate(-30deg);}
 /* Подвал */
 .footer {
     padding: 2.5em 0 3.75em;
@@ -356,9 +320,8 @@ a:hover{
         text-align: center;
     }
 
-    .hero-image {
-        flex: none;
-        max-width: 15.625em;
+    #hero-image {
+        display: none;
     }
 
     .hero-text p {
@@ -385,8 +348,6 @@ a:hover{
         top: 0.625em;
         left: 0.625em;
     }
-
-    .tickets_decor {display: none;}
 }
 
 @media (max-width: 37.5em) {
@@ -414,6 +375,4 @@ a:hover{
     .contacts-grid {
         font-size: 0.875em;
     }
-
-    .tickets_decor {display: none;}
 }
