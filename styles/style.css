@@ -351,6 +351,9 @@ a:hover{
         padding: 0.5em 1.875em;
         font-size: 1.25em;
     }
+    .modal-image {
+        display: none;
+    }
 
     .pricing-card {
         padding: 1.875em 1.25em;
