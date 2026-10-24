@@ -325,9 +325,7 @@ a:hover{
     }
 
     .modal-image {
-        flex: none;
-        width: 100%;
-        height: 12.5em;
+        display: none;
     }
 
     .modal-close {
