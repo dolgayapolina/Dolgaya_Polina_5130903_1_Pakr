@@ -1,39 +1,43 @@
+/* Контейнер для всего теста */
 .container-test {
     position: relative;
-    width: max(300px, 60%);
-    aspect-ratio: 2/1;
-    margin: 10% auto 0;
-    overflow: hidden;
+    width: max(300px, 70%);
+    height: auto;
+    margin: 6% auto 0;
 }
 
+/* Желтый фон заменили на голубой из палитры сайта */
 .test-background {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    aspect-ratio: 2/1;
-    background: rgb(248, 235, 183);
+    height: auto;
+    min-height: 25em; /* Примерно 400px, чтобы блок не был совсем маленьким */
+    background: var(--blue); 
+    border-radius: 1.875em; 
+    padding: 2em;
+    gap: 1.5em;
     overflow: hidden;
-    gap: 40px;
 }
 
-.info 
-{
+/* Плашка "Вопрос" */
+#info {
     display: flex;
     flex-direction: row;
-    gap: 10px;
-    width: 80%;
+    gap: 1em;
+    width: 100%;
+    align-items: center;
 }
 
-
 #question_rect {
-    width: 20%;
-    height: 100%; 
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-    color: white;
+    width: auto;
+    min-width: 8em;
+    padding: 0.5em 1.5em;
+    background-color: var(--pink);
+    border-radius: 1.875em; 
+    color: var(--cream);
     text-align: center;
 }
 
@@ -41,49 +45,100 @@
     content: "Вопрос";
 }
 
+#end {
+    color: var(--pink);
+    font-size: 1.2em;
+    margin: 0;
+}
+
+/* Блок с вопросами */
 #test {
     display: flex;
-    gap: 10px;
+    gap: 1em;
     flex-direction: column;
-    width: 80%; 
-    justify-content: center;
+    width: 100%; 
 }
 
 #questions_blok {
     display: flex;
-    gap: 10px;
+    gap: 1em;
     overflow-x: auto; 
     flex-wrap: nowrap; 
-    width: 60%; 
-    height: auto; 
+    width: 100%; 
+    height: auto;
+    padding-bottom: 0.5em;
 }
 
+/* Карточка вопроса */
 .question_text {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-    padding: 8px;
-    border-radius: 4px;
-    font-size: 1vw; 
-    width: 90%; 
-    flex-shrink: 0; 
+    background-color: var(--pink);
+    color: var(--cream);
+    padding: 1em;
+    border-radius: 1em;
+    font-size: clamp(12px, 1.2vw, 18px); 
+    width: 80%; 
+    flex-shrink: 0;
 }
 
+/* Блок с ответами */
 #answers_block {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 50%;
+    gap: 0.8em;
+    width: 100%;
 }
 
+/* Карточка ответа */
+.answer_item {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+    padding: 0.8em 1em;
+    background-color: var(--cream);
+    border-radius: 1em;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: transform 0.6s ease, opacity 0.6s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.answer_item:hover {
+    background-color:  var(--pink);
+}
+.answer_item:hover .answers_text {
+    color: var(--cream); 
+}
+
+/* Текст ответа */
 .answers_text {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-    padding: 6px;
-    border-radius: 4px;
-    font-size: 0.7vw;
-    width: 100%; 
+    color: var(--blue);
+    font-size: clamp(12px, 1vw, 16px);
+    font-weight: bold;
+    width: 100%;
 }
 
-.answers_text:hover {
-    background-color: rgba(0, 0, 0, 0.5); 
+/* Блок пояснения */
+.explain_text {
+    background-color: rgba(246, 245, 236, 0.8); /* Полупрозрачный кремовый */
+    color: var(--blue);
+    padding: 0.8em;
+    border-radius: 0.5em;
+    font-size: clamp(10px, 0.9vw, 14px);
+    width: 100%;
+    margin-top: 0.5em;
+}
+
+/* Картинки-галочки */
+.type_answer {
+    width: 24px;
+    height: auto;
+    margin-left: auto;
+}
+
+.slide-down {
+    transform: translateY(300px); 
+}
+
+.fade-out {
+    opacity: 0;        
 }

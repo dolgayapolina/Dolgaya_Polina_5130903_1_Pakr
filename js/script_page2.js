@@ -1,5 +1,7 @@
+const info = document.getElementById("info");
 const questions_blok = document.getElementById("questions_blok");
-const answers_block = document.getElementById("answers_block")
+const answers_block = document.getElementById("answers_block");
+
 const end = document.getElementById("end");
 
 let current_question = 0;
@@ -13,25 +15,48 @@ for (let i = randomOrder.length - 1; i > 0; i--) {
 }
 
 let right_answers = 0;
-function checkAnswer(answer, answer_elem){
+function checkAnswer(answer, ans, radio){
+    const allAnswers = document.querySelectorAll('.answer_item');
     if (answer.correct)
     {
+        ans.style.border = "0.2vw solid #94AB96";
+        ans.style.backgroundColor = '#C8E6C9';
         right_answers++;
-        answer_elem.style.transform = 'scale(1.3)';
+        ans.style.transform = 'scale(1.05)';
 
         const img = document.createElement("img");
         img.className = 'type_answer';
         img.src = '../images/correct.png';
         img.style.width = '4%';
-        answer_elem.appendChild(img);
+        ans.appendChild(img);
+
+        const explain = document.createElement('div')
+        explain.className = "explain_text";
+        explain.textContent = answer.explain;
+        ans.appendChild(explain);
+
+        let wrongAnswers = Array.from(allAnswers).filter(otherAns => otherAns !== ans);
+        
+        wrongAnswers.forEach((otherAns, index) => {
+            setTimeout(() => {
+                otherAns.classList.add('slide-down'); // Добавляем класс из CSS
+            }, index * 200); // Задержка: 0мс, 200мс, 400мс...
+        });
+
+        // Правильный ответ плавно исчезает через 2 секунды
+        setTimeout(() => {
+            ans.classList.add('fade-out');
+        }, 2000);
     }
     else
     {
+        ans.style.border = "0.2vw solid #CAA4AA";
+        ans.style.backgroundColor = '#FFCDD2';
         const img = document.createElement("img");
         img.className = 'type_answer';
         img.src = '../images/error.png';
         img.style.width = '4%';
-        answer_elem.appendChild(img);
+        ans.appendChild(img);
     }
 }
 
@@ -57,13 +82,24 @@ function addQuestion(step){
         let ind_ans = 1;
         randomAnswers.forEach(a => {
             const ans = document.createElement("div");
-            ans.className = "answers_text";
-            ans.textContent = ind_ans + ') ' + a.text;
+            ans.className = "answer_item";
+
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'answer_' + step;
+            radio.disabled = true;
+            radio.style.display = 'none';
+            const ansText = document.createElement("span");
+            ansText.className = "answers_text";
+            ansText.textContent = ind_ans + ') ' + a.text;
             
+            ans.appendChild(radio);
+            ans.appendChild(ansText);
+
             ans.addEventListener('click', function() {
-                ans.style.border = "0.2vw solid black";
-                
-                checkAnswer(a, ans);
+                radio.checked = true;
+
+                checkAnswer(a, ans, radio);
 
                 setTimeout(() => {
                     current_question ++;
@@ -72,6 +108,7 @@ function addQuestion(step){
             })
 
             answers_block.appendChild(ans);
+            
             ind_ans++;
         })
         questions_blok.scrollLeft = questions_blok.scrollWidth;
@@ -79,6 +116,10 @@ function addQuestion(step){
     else
     {
         end.textContent = "Вопросы закончились";
+        const statistika = document.createElement('p');
+        statistika.textContent = "Правильных ответов: " + right_answers;
+        info.appendChild(statistika);
+        questions_blok.style.width = '100%';
     }
 }
 
