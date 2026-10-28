@@ -17,6 +17,7 @@ for (let i = randomOrder.length - 1; i > 0; i--) {
 let right_answers = 0;
 function checkAnswer(answer, ans, radio){
     const allAnswers = document.querySelectorAll('.answer_item');
+    const currentQItem = questions_blok.lastElementChild;
     if (answer.correct)
     {
         ans.style.border = "0.2vw solid #94AB96";
@@ -26,9 +27,9 @@ function checkAnswer(answer, ans, radio){
 
         const img = document.createElement("img");
         img.className = 'type_answer';
-        img.src = '../images/correct.png';
+        img.src = '../images/correct.webp';
         img.style.width = '4%';
-        ans.appendChild(img);
+        currentQItem.appendChild(img);
 
         const explain = document.createElement('div')
         explain.className = "explain_text";
@@ -37,16 +38,17 @@ function checkAnswer(answer, ans, radio){
 
         let wrongAnswers = Array.from(allAnswers).filter(otherAns => otherAns !== ans);
         
-        wrongAnswers.forEach((otherAns, index) => {
-            setTimeout(() => {
-                otherAns.classList.add('slide-down'); // Добавляем класс из CSS
-            }, index * 200); // Задержка: 0мс, 200мс, 400мс...
-        });
-
-        // Правильный ответ плавно исчезает через 2 секунды
         setTimeout(() => {
-            ans.classList.add('fade-out');
-        }, 2000);
+            wrongAnswers.forEach((otherAns, index) => {
+                setTimeout(() => {
+                    otherAns.classList.add('slide-down');
+                }, index * 400); 
+            });
+
+            setTimeout(() => {
+                ans.classList.add('fade-out');
+            }, 5000);
+        }, 1000);
     }
     else
     {
@@ -54,24 +56,37 @@ function checkAnswer(answer, ans, radio){
         ans.style.backgroundColor = '#FFCDD2';
         const img = document.createElement("img");
         img.className = 'type_answer';
-        img.src = '../images/error.png';
+        img.src = '../images/error.webp';
         img.style.width = '4%';
-        ans.appendChild(img);
+        currentQItem.appendChild(img);
+
+        setTimeout(() => {
+            allAnswers.forEach((otherAns, index) => {
+                setTimeout(() => {
+                    otherAns.classList.add('slide-down');
+                }, index * 400); 
+            });
+        }, 1500);
     }
 }
 
 function addQuestion(step){
     answers_block.innerHTML = "";
+    answers_block.dataset.answered = "false";
     if (step < randomOrder.length)
     {
         const realIndex = randomOrder[step];
         const question = questions[realIndex];
 
-        const qText = document.createElement("div");
-        qText.className="question_text";
-        qText.textContent = (step+1) + ') ' + question.text;
+        const qItem = document.createElement("div");
+        qItem.className = "question_item";
 
-        questions_blok.appendChild(qText)
+        const qText = document.createElement("div");
+        qText.className = "question_text";
+        qText.textContent = (step + 1) + ') ' + question.text;
+
+        qItem.appendChild(qText);
+        questions_blok.appendChild(qItem);
 
         let randomAnswers = [...question.answers]; 
         
@@ -97,6 +112,9 @@ function addQuestion(step){
             ans.appendChild(ansText);
 
             ans.addEventListener('click', function() {
+                if (answers_block.dataset.answered === "true") return;
+                answers_block.dataset.answered = "true";
+                
                 radio.checked = true;
 
                 checkAnswer(a, ans, radio);
@@ -104,7 +122,7 @@ function addQuestion(step){
                 setTimeout(() => {
                     current_question ++;
                     addQuestion(current_question);    
-                }, 1000);
+                }, 6000);
             })
 
             answers_block.appendChild(ans);
@@ -115,12 +133,53 @@ function addQuestion(step){
     }
     else
     {
+        const end = document.createElement('p');
+        end.className = 'rect';
         end.textContent = "Вопросы закончились";
+
         const statistika = document.createElement('p');
+        statistika.className = 'rect';
         statistika.textContent = "Правильных ответов: " + right_answers;
+        
+        info.appendChild(end);
         info.appendChild(statistika);
+
         questions_blok.style.width = '100%';
+
+        endTest();
     }
+}
+
+function endTest() {
+    const allQuestions = document.querySelectorAll('.question_item');
+
+    allQuestions.forEach(qItem => {
+        qItem.addEventListener('click', function() {
+            answers_block.innerHTML = "";
+
+            const qTextContent = qItem.querySelector('.question_text').textContent;
+            const cleanText = qTextContent.substring(qTextContent.indexOf(')') + 2); 
+
+            const foundQuestion = questions.find(q => q.text === cleanText);
+
+            if (foundQuestion) {
+                const correctAns = foundQuestion.answers.find(a => a.correct);
+                
+                if (correctAns) {
+                    const ansBlock = document.createElement('div');
+                    ansBlock.className = "answer_item";
+
+                    const ansText = document.createElement('p');
+                    ansText.className = 'answers_text';
+                    ansText.textContent = correctAns.text;
+
+                    ansBlock.appendChild(ansText);
+                    answers_block.appendChild(ansBlock);
+
+                }
+            }
+        });
+    });
 }
 
 addQuestion(current_question);

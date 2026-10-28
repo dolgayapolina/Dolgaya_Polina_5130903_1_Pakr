@@ -27,13 +27,13 @@
     display: flex;
     flex-direction: row;
     gap: 1em;
-    width: 100%;
+    width: 90%;
     align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
-#question_rect {
-    width: auto;
-    min-width: 8em;
+.rect {
     padding: 0.5em 1.5em;
     background-color: var(--pink);
     border-radius: 1.875em; 
@@ -41,14 +41,9 @@
     text-align: center;
 }
 
-#question_rect::after {
-    content: "Вопрос";
-}
-
 #end {
-    color: var(--pink);
-    font-size: 1.2em;
-    margin: 0;
+    opacity: 0;
+    color: var(--cream);
 }
 
 /* Блок с вопросами */
@@ -69,15 +64,24 @@
     padding-bottom: 0.5em;
 }
 
-/* Карточка вопроса */
-.question_text {
-    background-color: var(--pink);
-    color: var(--cream);
+.question_item {
+    background-color: var(--pink); /* Тот самый розовый */
     padding: 1em;
     border-radius: 1em;
-    font-size: clamp(12px, 1.2vw, 18px); 
+    display: flex;
+    flex-direction: row; 
+    gap: 0.5em;
     width: 80%; 
     flex-shrink: 0;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+/* Карточка вопроса */
+.question_text {
+    color: var(--cream);
+    font-size: clamp(12px, 1.2vw, 18px); 
+    width: 100%; 
 }
 
 /* Блок с ответами */
@@ -99,7 +103,7 @@
     border-radius: 1em;
     cursor: pointer;
     box-sizing: border-box;
-    transition: transform 0.6s ease, opacity 0.6s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 1.2s ease-in-out, opacity 1s ease-in-out, background-color 0.3s ease, border 0.3s ease;
 }
 
 .answer_item:hover {
@@ -136,7 +140,7 @@
 }
 
 .slide-down {
-    transform: translateY(300px); 
+    transform: translateY(500px); 
 }
 
 .fade-out {
