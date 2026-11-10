@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/pic.css">
     <link rel="stylesheet" href="../styles/pic2.css">
     <link rel="stylesheet" href="../styles/test.css">
+    <link rel="stylesheet" href="../styles/words.css">
     <link rel="stylesheet" href="../styles/logo.css">
 </head>
 
@@ -29,6 +30,7 @@
                 <a href="#task1">Задание 1</a>
                 <a href="#task2">Задание 2</a>
                 <a href="#task3">Задание 3</a>
+                <a href="#task4">Задание 4</a>
             </nav>
         </div>
     </header>
@@ -137,6 +139,24 @@
                 <div id="questions_blok"></div>
                 <div id="answers_block"></div>
             </div>
+            <button id="restart">Заново</button>
+        </div>
+    </div>
+
+    <div class="container-words" id="task4">
+        <div class="words-background">
+            <div class="zone3" id="zone3">
+            </div>
+            <div class="zone_1_2" id="zone_1_2">
+                <div class="zone2" id="zone2"></div>
+                <div class="zone1" id="zone1">
+                    <div>
+                        <input type="text" id="input_frase">
+                        <button id="split_btn">Разбить</button>
+                    </div>
+                    <div id="result_words"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -152,5 +172,5 @@
 
     <script src="../js/questions.js"></script>
     <script src="../js/script_page2.js"></script>
-    
+    <script src="../js/words.js"></script>
 </body>

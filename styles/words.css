@@ -1,0 +1,84 @@
+.container-words {
+    position: relative;
+    width: max(300px, 70%);
+    height: auto;
+    margin: 6% auto 0;
+}
+
+.words-background {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    min-height: 25em; /* Примерно 400px, чтобы блок не был совсем маленьким */
+    background: var(--pink); 
+    border-radius: 1.875em; 
+    padding: 2em;
+    gap: 1.5em;
+    overflow: hidden;
+}
+
+
+.zone3 {
+    display: flex;
+    flex-wrap: wrap;         
+    align-content: flex-start;
+    gap: 0.5em;
+    width: 80%;
+    min-height: 5em;
+    height: auto;           
+    border: 0.3em solid var(--blue);
+    border-radius: 1.875em;
+    padding: 0.5em;
+    box-sizing: border-box;   
+    overflow: hidden;        
+}
+
+.zone_1_2 {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    min-height: 30em;
+    gap: 4em;
+}
+
+.zone2 {
+    position: relative;
+    overflow: hidden;
+    width: 45%;   
+    border: 0.3em solid var(--blue);
+    border-radius: 1.875em; 
+    gap: 0.3em;
+    box-sizing: border-box;   
+    padding: 0.3em;
+}
+
+.zone1 {
+    display: flex;
+    flex-direction: column;
+    width: 45%;  
+    border: 0.3em solid var(--blue);
+    border-radius: 1.875em; 
+    box-sizing: border-box;   
+    padding: 4em;
+    gap: 2em;
+}
+
+.block_item {
+    background-color: grey;
+    padding: 0.5em 1em;
+    border-radius: 1.875em;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.zone3 .block_item {
+    position: relative; 
+}
+.zone2 .block_item {
+    position: absolute; 
+    margin: 0;
+}

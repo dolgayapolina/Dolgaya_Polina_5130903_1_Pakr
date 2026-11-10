@@ -1,6 +1,8 @@
 const info = document.getElementById("info");
 const questions_blok = document.getElementById("questions_blok");
 const answers_block = document.getElementById("answers_block");
+const button = document.getElementById("restart");
+
 
 const end = document.getElementById("end");
 
@@ -181,5 +183,15 @@ function endTest() {
         });
     });
 }
+
+
+button.addEventListener('click', function() {
+    answers_block.innerHTML = "";
+    questions_blok.innerHTML = "";
+    current_question = 0;
+
+    addQuestion(current_question);
+})
+
 
 addQuestion(current_question);
