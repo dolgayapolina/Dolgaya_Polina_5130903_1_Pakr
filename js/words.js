@@ -56,6 +56,7 @@ function generate_color(){
 split_btn.addEventListener('click', function() {
     zone3.innerHTML = '';
     zone2.innerHTML = '';
+    result_words.textContent = '';
     const text = input_frase.value;
     if (text === '')
     {
@@ -64,9 +65,6 @@ split_btn.addEventListener('click', function() {
     else
     {
         result_words.style.display = 'block';
-        result_words.style.width = '80%';
-        result_words.style.height = '20%';
-        result_words.style.border = '0.2em solid red'
     }
     const words_dict = split_words(text);
     
@@ -144,5 +142,44 @@ zone2.addEventListener('drop', (e) => {
         zone2.appendChild(draggedBlock); 
         draggedBlock = null;
     }
+});
+
+zone3.addEventListener('dragover', (e) => {
+    e.preventDefault();   
+});
+
+
+function insertIntoZone3(block) {
+    const blockKey = block.textContent.split(' ')[0];
+    
+    const blocks_in_zone3 = Array.from(zone3.querySelectorAll('.block_item'));
+
+    const nextBlock = blocks_in_zone3.find(block_3 => {
+        const block_3_key = block_3.textContent.split(' ')[0];
+        
+        return block_3_key.localeCompare(blockKey, undefined, { numeric: true }) > 0;
+    });
+
+    if (nextBlock) {
+        zone3.insertBefore(block, nextBlock);
+    } else {
+        zone3.appendChild(block);
+    }
+}
+
+zone3.addEventListener('drop', (e) => {
+    e.preventDefault();
+    if (!draggedBlock) return;
+
+    draggedBlock.style.position = ''; 
+    
+    draggedBlock.style.left = '';
+    draggedBlock.style.top = '';
+
+    draggedBlock.style.backgroundColor = '';
+
+    insertIntoZone3(draggedBlock);
+    
+    draggedBlock = null;
 });
 

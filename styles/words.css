@@ -52,7 +52,7 @@
     border-radius: 1.875em; 
     gap: 0.3em;
     box-sizing: border-box;   
-    padding: 0.3em;
+    padding: 0.1em;
 }
 
 .zone1 {
@@ -81,4 +81,15 @@
 .zone2 .block_item {
     position: absolute; 
     margin: 0;
+}
+
+#result_words{
+    display: none;
+    width : 100%;
+    height :auto;
+    min-height: 20%;
+    background-color: var(--cream);
+    border : 0.2em solid var(--cream);
+    border-radius: 1em;
+    padding: 0.3em;
 }
