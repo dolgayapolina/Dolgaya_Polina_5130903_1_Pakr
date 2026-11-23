@@ -1,0 +1,149 @@
+#task
+{
+    margin-top: 10%;
+}
+
+#rules
+{
+    margin: 10%;
+    width: 80%;
+    height: auto;
+    color: var(--cream);
+    background-color: var(--blue);
+    border-radius: 1.875em;
+    padding: 2em;
+}
+
+#rules h1
+{
+    color: var(--pink);
+}
+
+#game_block
+{
+    margin: 10%;
+    display: flex;
+    width: 80%;
+    background-color: var(--blue);
+    border-radius: 1.875em;
+    padding: 2em;
+    flex-direction: column;
+    align-items: center;
+}
+
+#start_game 
+{
+    background-color: var(--cream);
+    border-radius: 1.875em;
+    color: var(--blue);
+}
+
+/* Скрытый блок */
+.hidden
+{
+    display: none !important;
+}
+
+#status_bar {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin-bottom: 1.5em;
+}
+
+.status_item {
+    padding: 0.5em 1.5em;
+    background-color: var(--pink);
+    border-radius: 1.875em;
+    color: var(--cream);
+    font-size: clamp(12px, 1vw, 16px);
+}
+
+/* Игровое поле */
+#field {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* ровно 4 карточки в ряду */
+    gap: 1em;
+    width: 100%;
+    min-height: 10em;
+    background-color: rgba(246, 245, 236, 0.2);
+    border-radius: 1em;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+/* Карточка со словом */
+.card {
+    padding: 1em 1.5em;
+    border-radius: 1em;
+    font-weight: bold;
+    font-size: clamp(14px, 1.2vw, 18px);
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Ящики */
+#boxes {
+    display: flex;
+    gap: 1.5em;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1.5em;
+}
+
+.box {
+    width: 9em;
+    min-height: 9em;
+    border-radius: 1.875em;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    justify-content: center;
+    cursor: pointer;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    gap: 0.2em;
+}
+
+.box_title {
+    color: var(--cream);
+    font-weight: bold;
+    font-size: clamp(14px, 1.2vw, 18px);
+}
+
+/* Кнопки управления */
+#controls {
+    margin-top: 1.5em;
+    text-align: center;
+}
+
+#check_btn,
+#retry_btn,
+#next_btn {
+    padding: 0.7em 2em;
+    background-color: var(--cream);
+    border-radius: 1.875em;
+    color: var(--blue);
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+/* Блок результата */
+#result {
+    margin-top: 1.5em;
+    text-align: center;
+}
+
+.result_text {
+    color: var(--cream);
+    font-size: clamp(14px, 1.2vw, 18px);
+}

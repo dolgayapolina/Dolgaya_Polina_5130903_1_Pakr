@@ -7,7 +7,10 @@
     --cream: #F6F5EC;
     --blue: #A3BFD7;
     --pink: #FBB2B3;
+    --red: #d9534f;
+    --green: #4f9d69;
 }
+
 
 body {
     font-family: Comfortaa, sans-serif;
@@ -292,6 +295,7 @@ a:hover{
 }
 /* Подвал */
 .footer {
+    margin-top: 10%;
     padding: 2.5em 0 3.75em;
     text-align: center;
 }
