@@ -6,9 +6,11 @@
 :root {
     --cream: #F6F5EC;
     --blue: #A3BFD7;
+    --light-blue: rgba(163, 191, 215, 0.83);
     --pink: #FBB2B3;
     --red: #d9534f;
     --green: #4f9d69;
+    --yellow: #f1c40f;
 }
 
 

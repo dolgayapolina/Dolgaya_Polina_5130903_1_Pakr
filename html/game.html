@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,11 @@
     <link rel="stylesheet" href="../styles/game.css">
     <link rel="stylesheet" href="../styles/logo.css">
 </head>
+
 <body>
     <header class="header">
         <div class="container">
-            <a href="../index.html" class="logo-link">      
+            <a href="../index.html" class="logo-link">
                 <div class="cotton-candy">
                     <div class="cotton-candy-icon">
                         <div class="cloud"></div>
@@ -23,7 +25,7 @@
             <nav class="nav">
                 <a href="#task">Задание</a>
                 <a href="#rules">Правила</a>
-                <a href = "game_block">Игровое поле</a>
+                <a href="game_block">Игровое поле</a>
             </nav>
         </div>
     </header>
@@ -34,60 +36,24 @@
             <li>найти пару по какому-то признаку, слова с определенной буквой</li>
             <li>на картинках части речи</li>
             <li>слова с перепутанными буквами</li>
-         </ul>
+        </ul>
     </div>
 
-    <div id="rules">
-        <h1>Правила игры</h1>
-
-            <p><strong>Уровень 1 — по СМЫСЛУ.</strong> Смотри на то, что написано на карточке.
-            «КРАСНЫЙ» — в ящик «Красный», цвет букв игнорируй.</p>
-
-            <p><strong>Уровень 2 — по ЦВЕТУ БУКВ.</strong> Теперь смотри только на цвет шрифта:
-            «КРАСНЫЙ» синими буквами — в ящик «Синий».</p>
-
-            <p><strong>Уровень 3 — по ЦВЕТУ ФОНА.</strong> Смотри только на фон карточки:
-            «ЗЕЛЁНЫЙ» на синем фоне — в ящик «Синий».</p>
-
-            <p>Кликни по карточке, чтобы переложить её в ящик. Кликни по карточке внутри ящика —
-            она вернётся на поле. Когда всё разложишь — жми «Проверка».</p>
-    </div>
-
-    
-    <div id="game_block">
-        <button id="start_game">Начать</button>
-        <div id="status_bar" class="hidden">
-            <div class="status_item">Уровень 1 — Читаем СМЫСЛ</div>
-            <div class="status_item">Верно: <span id="stat_ok">0</span></div>
-            <div class="status_item">Неверно: <span id="stat_bad">0</span></div>
-            <div class="status_item">Не разложено: <span id="stat_left">0</span></div>
+    <div id="game">
+        <h1>Выберите уровень игры</h1>
+        
+        <div class ="level" id="level1" data-level="1">
+            <p><strong>Уровень 1</strong></p>
         </div>
 
-            
-        <div id="field" class="hidden">
+        <div class ="level" id="level2" data-level="2">
+        <p><strong>Уровень 2</strong></p>
         </div>
 
-        <div id="boxes" class="hidden">
-            
-        </div>
-
-        <!-- Кнопка проверки -->
-        <div id="controls" class="hidden">
-            <button id="check_btn">Проверка</button>
-        </div>
-
-        <!-- Блок результата (показывается после «Проверка») -->
-        <div id="result" class="hidden">
-            <p class="result_text">
-                ✅ Верно: <span id="res_ok">0</span>
-                ❌ Неверно: <span id="res_bad">0</span>
-                ⚠️ Не разложено: <span id="res_left">0</span>
-            </p>
-            <button id="retry_btn">Ещё раз</button>
-            <button id="next_btn">Следующий уровень</button>
+        <div class ="level" id="level3" data-level="3">
+        <p><strong>Уровень 3 </strong></p>
         </div>
     </div>
-
 
     <footer class="footer" id="contacts">
         <div class="container">
@@ -99,7 +65,8 @@
         </div>
     </footer>>
 
-    <script src="../js/cards.js"></script>
+    <script src="../js/values_for_game.js"></script>
     <script src="../js/game.js"></script>
 </body>
+
 </html>
