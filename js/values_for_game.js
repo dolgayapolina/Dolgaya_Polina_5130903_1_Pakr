@@ -89,7 +89,33 @@ for (const wordColor of COLORS) {
         for (const bg of COLORS) {
             if (wordColor === font && font === bg)  continue;
             if (font === bg) continue;
-            CARDS.push({ word: WORDS[wordColor], font: font, bg: bg });
+            CARDS.push({ word: WORDS[wordColor], wordColor: wordColor, font: font, bg: bg });
         }
+    }
+}
+
+// ===== Уровень 2: слова-ассоциации по цветам =====
+
+const WORDS_ASSOC = {
+    red:    ['томат', 'клубника', 'огонь', 'сердце'],
+    green:  ['трава', 'лягушка', 'лист', 'огурец'],
+    yellow: ['лимон', 'солнце', 'банан', 'курица'],
+    blue:   ['небо', 'море', 'лёд', 'василёк'],
+};
+
+const CARDS_ASSOC = [];
+for (const assocColor of COLORS) {
+    for (const word of WORDS_ASSOC[assocColor]) {
+        let font;
+        do {
+            font = COLORS[Math.floor(Math.random() * COLORS.length)];
+        } while (font === assocColor);
+
+        let bg;
+        do {
+            bg = COLORS[Math.floor(Math.random() * COLORS.length)];
+        } while (bg === font);
+
+        CARDS_ASSOC.push({ word: word, assoc: assocColor, font: font, bg: bg });
     }
 }

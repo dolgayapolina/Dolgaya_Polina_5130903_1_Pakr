@@ -103,11 +103,12 @@
     gap: 1em;
     width: 100%;
     min-height: 10em;
-    background-color: var(--light-blue);
+    background-color: var(--cream);
     border-radius: 1em;
     padding: 1em;
     box-sizing: border-box;
 }
+
 
 /* Карточка со словом */
 .card {
@@ -123,6 +124,13 @@
     justify-content: center;
 }
 
+.card_right {
+    box-shadow: 0 0 8px 3px var(--green);
+}
+
+.card_wrong {
+    box-shadow: 0 0 8px 2px var(--red);
+}
 
 /* Ящики */
 #boxes {
@@ -156,6 +164,15 @@
     font-size: clamp(14px, 1.2vw, 18px);
 }
 
+.box .card {
+    width: 90%;
+    height: auto;
+    min-height: 0;
+    font-size: 0.8em; /* текст уменьшается вместе с карточкой */
+    box-sizing: border-box;
+    padding: 0.375em 0.5em;
+}
+
 /* Кнопки управления */
 #controls {
     margin-top: 1.5em;
@@ -179,6 +196,6 @@
 }
 
 .result_text {
-    color: var(--cream);
+    color: var(--blue);
     font-size: clamp(14px, 1.2vw, 18px);
 }

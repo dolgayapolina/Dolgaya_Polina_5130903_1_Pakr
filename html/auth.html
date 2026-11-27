@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Облако Счастья — Вход</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/auth.css">
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <h1 class="auth-title">Облако Счастья</h1>
+            <p class="auth-subtitle">Войдите, чтобы вернуться в детство</p>
+
+            <div class="auth-tabs">
+                <button id="tab_login" class="tab active">Вход</button>
+                <button id="tab_register" class="tab">Регистрация</button>
+            </div>
+
+            <form id="login_form" class="auth-form">
+                <input type="text" id="login_name" placeholder="Логин" required>
+                <input type="password" id="login_pass" placeholder="Пароль" required>
+                <button type="submit" class="auth-btn">Войти</button>
+                <p id="login_error" class="auth-error"></p>
+            </form>
+
+            <form id="register_form" class="auth-form hidden">
+                <input type="text" id="reg_name" placeholder="Логин" required>
+                <input type="password" id="reg_pass" placeholder="Пароль (мин. 4 символа)" required>
+                <input type="password" id="reg_pass2" placeholder="Повторите пароль" required>
+                <button type="submit" class="auth-btn">Зарегистрироваться</button>
+                <p id="register_error" class="auth-error"></p>
+            </form>
+
+            <a href="../index.html" class="auth-back">← Вернуться в парк</a>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+</body>
+</html>

@@ -6,12 +6,18 @@ const boxes = document.getElementById('boxes')
 const controls = document.getElementById('controls')
 const check_btn =document.getElementById('check_btn')
 
+
 let box_cnt = 3;
 let draggedCard = null; 
 let level = 1;
 
 let score_right_total = 0;
 let score_error_total = 0;
+
+const currentUser = localStorage.getItem('currentUser');
+if (!currentUser) {
+    window.location.href = 'auth.html';
+}
 
 function renderBoxes() {
     const boxes = document.getElementById('boxes'); 
@@ -36,12 +42,17 @@ function renderBoxes() {
         box.addEventListener('drop', function (e) {
             e.preventDefault();
             if (draggedCard) {
-                box.appendChild(draggedCard); 
+                box.appendChild(draggedCard);  
                 draggedCard = null;
+                
             }
         });
+
         boxes.appendChild(box);
     }
+    boxes.addEventListener('click', function (e) {
+        e.stopPropagation();
+    });
 }
 
 function startGame() {
@@ -52,6 +63,10 @@ const levels = document.getElementsByClassName("level")
 
             const game_block = document.createElement('div');
             game_block.id = 'game_block';
+
+            game_block.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
 
             const status_bar = document.createElement('div');
             status_bar.id = 'status_bar';
@@ -79,7 +94,7 @@ const levels = document.getElementsByClassName("level")
                 sublevel_item.dataset.level = level.dataset.level;
 
                 const sublevel_name = document.createElement('p');
-                sublevel_name.textContent = sub.sub_l_name;;
+                sublevel_name.textContent = sub.sub_l_name;
 
                 const sublevel_rule = document.createElement('p');
                 sublevel_rule.textContent = sub.rule;
@@ -94,8 +109,8 @@ const levels = document.getElementsByClassName("level")
                 sublevels.appendChild(sublevel_item);
 
                 sublevel_item.addEventListener('click', (e) => {
-                    e.stopPropagation(); // клик не уйдёт выше, до уровня не дойдёт
-                    setTimeout(startLevel(level.dataset.level, subNum));
+                    e.stopPropagation();
+                    setTimeout(() => startLevel(level.dataset.level, subNum)); // стрелка, а не прямой вызов
                 });
             };
             game_block.appendChild(status_bar);
@@ -104,6 +119,63 @@ const levels = document.getElementsByClassName("level")
         });
     }
 }
+
+
+function shuffleLetters(word) {
+    if (word.length < 2) return word; // одну букву перемешивать нечего
+
+    let result = word;
+    while (result === word) {
+        const letters = [...word];
+        for (let i = letters.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [letters[i], letters[j]] = [letters[j], letters[i]];
+        }
+        result = letters.join('');
+    }
+    return result;
+}
+
+
+function checkAnswers() {
+    const field = document.getElementById('field');
+    const result = document.getElementById('result');
+
+    let right = 0;
+    let wrong = 0;
+
+    // снимаем подсветки прошлой проверки
+    for (const c of document.querySelectorAll('.card')) {
+        c.classList.remove('card_right', 'card_wrong');
+    }
+
+    const boxList = document.querySelectorAll('#boxes .box');
+
+    for (const box of boxList) {
+        const cardsInBox = box.querySelectorAll('.card');
+
+        for (const card of cardsInBox) {
+            if (card.dataset.answer === box.dataset.color) {
+                right++;
+                card.classList.add('card_right');
+            } else {
+                wrong++;
+                card.classList.add('card_wrong');
+            }
+        }
+    }
+
+    const left = field.querySelectorAll('.card').length;
+
+    result.innerHTML =
+        '<p class="result_text">' +
+        '<span class="res_ok">Верно: ' + right + '</span> | ' +
+        '<span class="res_err">Ошибок: ' + wrong + '</span> | ' +
+        '<span class="res_left">Не разложено: ' + left + '</span>' +
+        '</p>';
+}
+
+
 
 function startLevel(levelNum, subNum) {
     const game_block = document.getElementById('game_block');
@@ -119,24 +191,66 @@ function startLevel(levelNum, subNum) {
     const field = document.createElement('div');
     field.id = 'field';
 
+    field.addEventListener('dragover', function (e) {
+        e.preventDefault();
+    });
+    
+    field.addEventListener('drop', function (e) {
+        e.preventDefault();
+        if (draggedCard) {
+            field.appendChild(draggedCard);
+            draggedCard = null;
+        }
+    });
+
+    field.addEventListener('click', function (e) {
+        e.stopPropagation();
+    });
+
     const boxes = document.createElement('div');
     boxes.id = 'boxes';
 
     game_block.appendChild(field);
     game_block.appendChild(boxes);
-    const shuffled = [...CARDS].sort(() => Math.random() - 0.5);
+    let shuffled;
+    if (levelNum === '1')
+    {
+        shuffled = [...CARDS].sort(() => Math.random() - 0.5);
+    }
+    else if (levelNum === '2' || levelNum === '3')
+    {
+        shuffled = [...CARDS_ASSOC].sort(() => Math.random() - 0.5);
+    }
+
     const selected = shuffled.slice(0, 12);
     for (let i = 0; i < selected.length; i++) {
         const item = selected[i];
         const card = document.createElement('div');
         card.className = 'card';
-        card.textContent = item.word;
+        if (levelNum === '1' || levelNum === '2')
+        {
+            card.textContent = item.word;
+        } 
+        else if(levelNum === '3')
+        {
+            card.textContent = shuffleLetters(item.word);
+        } 
+        let answer;
+        if (subNum === '1') {
+            answer = (levelNum === '1') ? item.wordColor : item.assoc;
+        } else if (subNum === '2') {
+            answer = item.font;
+        } else {
+            answer = item.bg;
+        }
+        card.dataset.answer = answer;
         card.style.color = 'var(--' + item.font + ')';
         card.style.backgroundColor = 'var(--' + item.bg + ')';
 
         card.draggable = true;
         card.addEventListener('dragstart', function () {
             draggedCard = card;
+            card.classList.remove('card_right', 'card_wrong');
             card.classList.add('dragging');
         });
         
@@ -145,28 +259,37 @@ function startLevel(levelNum, subNum) {
             card.classList.remove('dragging');
         });
         
-        card.addEventListener('click', function () {
+        card.addEventListener('click', function (e) {
+            e.stopPropagation(); // клик по карточке не всплывает до уровня
+            card.classList.remove('card_right', 'card_wrong');
             if (card.parentElement !== field) {
                 field.appendChild(card);
             }
         });
-
         field.appendChild(card);
+
     }
     renderBoxes();
+    const controls = document.createElement('div');
+    controls.id = 'controls';
+    controls.addEventListener('click', function (e) {
+        e.stopPropagation(); // клик по кнопке не будит уровень
+    });
+
+    const check_btn = document.createElement('button');
+    check_btn.id = 'check_btn';
+    check_btn.className = 'button';
+    check_btn.textContent = 'Проверить';
+    check_btn.addEventListener('click', checkAnswers);
+
+    controls.appendChild(check_btn);
+
+    const result = document.createElement('div');
+    result.id = 'result';
+
+    game_block.appendChild(controls);
+    game_block.appendChild(result);
 }
-
-field.addEventListener('dragover', function (e) {
-    e.preventDefault();
-});
-
-field.addEventListener('drop', function (e) {
-    e.preventDefault();
-    if (draggedCard) {
-        field.appendChild(draggedCard);
-        draggedCard = null;
-    }
-});
 
 
 startGame();

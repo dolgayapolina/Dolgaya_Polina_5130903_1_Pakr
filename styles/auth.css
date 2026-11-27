@@ -1,0 +1,133 @@
+/* страница авторизации в стиле парка */
+
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25em;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 25em; /* как pricing-card — в одинаковой пропорции */
+    padding: 2.5em;
+    background: var(--blue);
+    color: var(--cream);
+    border-radius: 1.875em;
+    text-align: center;
+    box-shadow: 0 0 1.25em 0.625em rgba(251, 178, 179, 0.6);
+}
+
+.auth-title {
+    margin: 0 0 0.625em;
+    font-size: 1.75em;
+    font-weight: normal;
+    color: var(--pink);
+}
+
+.auth-subtitle {
+    margin: 0 0 1.875em;
+    font-size: 0.875em;
+    opacity: 0.9;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: 0.625em;
+    margin-bottom: 1.875em;
+    background: var(--cream);
+    border-radius: 1.25em;
+    padding: 0.3125em;
+}
+
+.tab {
+    flex: 1;
+    padding: 0.625em;
+    border: none;
+    border-radius: 1em;
+    background: transparent;
+    color: var(--blue);
+    font-family: Comfortaa, sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.tab.active {
+    background: var(--pink);
+    color: var(--cream);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875em;
+}
+
+.auth-form input {
+    padding: 0.75em 1em;
+    border: 0.125em solid var(--pink);
+    border-radius: 0.875em;
+    background: var(--cream);
+    font-family: Comfortaa, sans-serif;
+    font-size: 1em;
+    color: var(--blue);
+    outline: none;
+    transition: box-shadow 0.2s ease;
+}
+
+.auth-form input:focus {
+    box-shadow: 0 0 0.625em 0.3125em rgba(251, 178, 179, 0.6);
+}
+
+.auth-btn {
+    margin-top: 0.375em;
+    padding: 0.75em;
+    border: none;
+    border-radius: 0.875em;
+    background: var(--pink);
+    color: var(--cream);
+    font-family: Comfortaa, sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 0.625em 0.3125em rgba(163, 191, 215, 0.6);
+}
+
+.auth-error {
+    color: var(--cream);
+    background: var(--red);
+    border-radius: 0.875em;
+    font-size: 0.875em;
+    margin: 0.375em 0 0;
+    min-height: 1.25em;
+    padding: 0.25em 0.75em;
+}
+
+/* пустое поле ошибки не занимает место */
+.auth-error:empty {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.auth-back {
+    display: inline-block;
+    margin-top: 1.25em;
+    font-size: 0.875em;
+    color: var(--cream);
+    text-decoration: none;
+}
+
+.auth-back:hover {
+    color: var(--pink);
+}
+
+.hidden {
+    display: none;
+}
